@@ -1,0 +1,18 @@
+.producao-container .content form {
+    width: 100%;
+    max-width: 450px;
+    margin: 20px auto;
+}
+
+.producao-container .content form input{
+    margin-top: 10px;
+}
+
+.producao-container .content header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    font-weight: 700;
+    font-size: 28px;
+}
