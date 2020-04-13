@@ -30,7 +30,7 @@ form input {
     padding: 0 24px;
 }
 form select {
-    width: 100%;
+    width: 100% !important;
     height: 60px;
     color: #333 ;
     border: 1px solid #dcdce6;

@@ -1,19 +1,48 @@
 import React, { useState } from 'react'
-import InputMask from 'react-input-mask'
+import { Link, useHistory, } from 'react-router-dom'
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
+import api from '../../services/api'
 
 import './styles.css';
 import stock from '../../assets/stock.svg'
 
 export default function Saida() {
 
+    const history = useHistory();
+
     const [state, setState] = useState({
         escola: "",
         quantidade: "",
-        data: "",
+        // data: new Date(),
     })
 
-    async function handleSubmit() {
+    const [startDate, setStartDate] = useState(new Date());
+    // const [escola, setEscola] = useState("");
+    // const [quantidade, setQuantidade] = useState("");
 
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+       
+
+        console.log(e);
+        // try {
+        //     await api.post('saida', data, {
+        //         headers: {
+        //      //       Authorization: ongId,
+        //         }
+        //     }
+
+        //     )
+        //     alert(`Saida realizada com Sucesso`)
+        //     history.push('/dashboard')
+        // } catch (error) {
+        //     alert(`Erro ao cadastrar ${error}`)
+
+        // }
 
     }
 
@@ -24,7 +53,7 @@ export default function Saida() {
             ...state,
             [evt.target.name]: value
         });
-        console.log(value)
+       // console.log(value)
     }
 
     return (
@@ -47,14 +76,15 @@ export default function Saida() {
                         name="quantidade"
                         value={state.quantidade}
                         onChange={handleChange} />
-                     <InputMask
-                        placeholder="Data"
-                        mask="99/99/99"
-                        name="data"
-                        value={state.data}
-                        onChange={handleChange}
 
+                    <DatePicker
+                        name="data"
+                        showPopperArrow={false}
+                        selected={startDate}
+                        onChange={date => setStartDate(date)}
+                        dateFormat="dd/MM/yyyy"
                     />
+
                     <button className="button" type="submit">Enviar</button>
                 </form>
             </div>
