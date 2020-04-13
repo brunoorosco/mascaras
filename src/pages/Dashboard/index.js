@@ -9,29 +9,31 @@ export default function Dashboard() {
         <div className="container-dashboard">
             <div className="content">
 
-                <Link className="back-link" to="/producao" >
-                    <div className="min-100">
-                        Produção
-                </div>
+                <Link className="" to="/producao" >
+                   Produção 
+              
                 </ Link>
 
 
-                <Link className="back-link" to="/saida" >
-                    <div className="min-100">
+                <Link className="" to="/saida" >
+                   
                         Saída
-                    </div>
+                   
                 </ Link>
 
                 <div className="min-100">
-                    Produzido =  {}
+                    Produzido
+                    <p> {}</p>
                 </div>
 
                 <div className="min-100">
-                    Saída = {}
+                    Saída 
+                    <p> {}</p>
                 </div>
                 
                 <div className="min-100">
-                    Estoque {}
+                    Estoque
+                    <p> {}</p>
                 </div>
 
             </div>
