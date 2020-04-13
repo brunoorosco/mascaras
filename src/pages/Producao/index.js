@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 import DatePicker from "react-datepicker";
+import moment from 'moment'
+import {Link, useHistory} from 'react-router-dom'
+
+import api from '../../services/api'
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -8,6 +12,7 @@ import producao from '../../assets/producao.png'
 
 export default function Producao() {
 
+    const history = useHistory();
     const [startDate, setStartDate] = useState(new Date());
 
     const [state, setState] = useState({
@@ -19,14 +24,29 @@ export default function Producao() {
     async function handleSubmit() {
         const data = setState({
             ...state,
-            setStartDate
+            startDate
         });
         console.log(data);
+        try {
+                await api.post('production', data, {
+                    headers: {
+                 //       Authorization: ongId,
+                    }
+                }
+    
+                )
+                alert(`Saida realizada com Sucesso`)
+                history.push('/dashboard')
+            } catch (error) {
+                alert(`Erro ao cadastrar ${error}`)
+    
+            }
 
     }
     function handleData(data) {
+      
        setStartDate(data)
-        console.log(data.format("dd/MM/yyyy"))
+        console.log(moment(data).format("DD-MM-YYYY"))
         // setStartDate(evt.target.value)
     }
 
