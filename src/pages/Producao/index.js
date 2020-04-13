@@ -24,15 +24,21 @@ export default function Producao() {
         console.log(data);
 
     }
+    function handleData(data) {
+       setStartDate(data)
+        console.log(data.format("dd/MM/yyyy"))
+        // setStartDate(evt.target.value)
+    }
 
     function handleChange(evt) {
         evt.preventDefault();
+
         const value = evt.target.value;
         setState({
             ...state,
             [evt.target.name]: value
         });
-        console.log(value)
+        console.log(evt.target.name + value)
     }
     return (
         <div className="producao-container">
@@ -52,11 +58,18 @@ export default function Producao() {
                         placeholder="Quantidade"
                         value={state.quantidade}
                         onChange={handleChange} />
+                    {/* <DatePicker
+                        name="data"
+                        showPopperArrow={false}
+                        selected={state.data}
+                        onChange={handleChange}
+                        dateFormat="dd/MM/yyyy"
+                    /> */}
                     <DatePicker
                         name="data"
                         showPopperArrow={false}
                         selected={startDate}
-                        onChange={date => setStartDate(date)}
+                        onChange={date =>handleData(date)}
                         dateFormat="dd/MM/yyyy"
                     />
 
