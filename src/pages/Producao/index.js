@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import DatePicker from "react-datepicker";
 import moment from 'moment'
-import {Link, useHistory} from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import api from '../../services/api'
 
@@ -18,14 +18,15 @@ export default function Producao() {
     const [state, setState] = useState({
         material: "",
         quantidade: "",
-        data: "",
+        data: moment(new Date()).format("DD-MM-YYYY"),
     })
 
-    async function handleSubmit() {
-        const data = setState({
-            ...state,
-            startDate
-        });
+    async function handleSubmit(e) {
+
+        e.preventDefault();
+        const data = state
+        //  startDate
+
         console.log(data);
         try {
                 await api.post('production', data, {
@@ -33,19 +34,22 @@ export default function Producao() {
                  //       Authorization: ongId,
                     }
                 }
-    
+
                 )
-                alert(`Saida realizada com Sucesso`)
-                history.push('/dashboard')
+                 history.push('/dashboard')
             } catch (error) {
                 alert(`Erro ao cadastrar ${error}`)
-    
+
             }
 
     }
     function handleData(data) {
-      
-       setStartDate(data)
+
+        setStartDate(data)
+        setState({
+            ...state,
+            data: moment(data).format("DD-MM-YYYY")
+        })
         console.log(moment(data).format("DD-MM-YYYY"))
         // setStartDate(evt.target.value)
     }
@@ -58,7 +62,7 @@ export default function Producao() {
             ...state,
             [evt.target.name]: value
         });
-        console.log(evt.target.name + value)
+        console.log(value)
     }
     return (
         <div className="producao-container">
@@ -89,7 +93,7 @@ export default function Producao() {
                         name="data"
                         showPopperArrow={false}
                         selected={startDate}
-                        onChange={date =>handleData(date)}
+                        onChange={date => handleData(date)}
                         dateFormat="dd/MM/yyyy"
                     />
 

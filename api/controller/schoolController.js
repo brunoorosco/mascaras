@@ -13,7 +13,7 @@ module.exports = {
        await connection('school').insert({
             name,
         })    
-        return res.json({"message":"cadastro Realizado!"})
+        return res.json({"message":"Escola Cadastrada!"})
     },
 
 }

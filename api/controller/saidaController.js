@@ -3,25 +3,26 @@ const connection = require('../../database/connection')
 module.exports = {
 
     async index(req, res) {
-        const entrada = await connection('entrada').select('*');
-        return res.json(entrada);
+        const saida = await connection('saida').select('*');
+        return res.json(saida);
     },
 
     async create(req, res) {
+
        
-        const { material, quantidade, data } = req.body;
-        const [id] = await connection('entrada').insert({
-            material,
+        const { id_school, quantidade, data } = req.body;
+        const [id] = await connection('saida').insert({
+            id_school,
             quantidade,
             data
         })
-        return res.json({ "message": "Entrada Realizada!" })
+        return res.json({ "message": "Saída Realizada!" })
     },
     async delete(req, res) {
         const { id } = req.params;
         // const ong_id = req.headers.authorization;
 
-        const production = await connection('entrada')
+        const production = await connection('saida')
             .where('id', id)
             // .select('ong_id')
             .first();
@@ -29,7 +30,7 @@ module.exports = {
         // if (incident.ong_id !== ong_id) {
         //     return res.status(401).json({ error: "Operation not permitted." })
         // }
-        await connection('entrada').where('id', id).delete();
+        await connection('saida').where('id', id).delete();
         return res.status(204).send();
     }
 
