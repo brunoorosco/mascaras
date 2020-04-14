@@ -6,7 +6,7 @@ import api from '../../services/api';
 import './styles.css';
 
 export default function Dashboard() {
-    
+
     const [stocks, setStock] = useState([])
     const [state, setState] = useState({
         estoque: [],
@@ -21,11 +21,10 @@ export default function Dashboard() {
                 // Authorization: ongId
             }
         }).then(response => {
-            setStock([response.data])
-             const estoque = stocks.map(stock => (stock.material))  
-            console.log(estoque)
+            setStock(response.data)
+
         })
-    })
+    }, [])
 
     return (
         <div className="container-dashboard">
@@ -50,7 +49,11 @@ export default function Dashboard() {
 
                 <div className="min-100">
                     <p className="title"> Estoque</p>
-                    <p className="text">{}</p>
+                    {stocks.map(stock => (
+                        <p  className="text" key={stock.id}>{stock.quantidade}</p>
+
+                    ))}
+                  
                 </div>
 
             </div>
