@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Link , useHistory, } from 'react-router-dom'
+import React, { useState, useEffect } from 'react'
+import { Link, useHistory, } from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import moment from 'moment'
 
@@ -14,19 +14,26 @@ export default function Saida() {
 
     const history = useHistory();
     const [startDate, setStartDate] = useState(new Date());
+    const [schools, setSchools] = useState([]);
 
     const [state, setState] = useState({
-        material: "",
         quantidade: "",
         data: moment(new Date()).format("DD-MM-YYYY"),
+        school_id: ""
     })
+
+    useEffect(() => {
+        api.get('school').then(response => {
+            setSchools(response.data)
+        })
+    }, [setSchools])
 
     async function handleSubmit(e) {
 
         e.preventDefault();
         const data = state
         console.log(data);
-      
+
         try {
             await api.post('saida', data, {
                 headers: {
@@ -73,12 +80,15 @@ export default function Saida() {
                     <img src={stock} width={125} alt="" />
                 </header>
                 <form onSubmit={handleSubmit}>
-                    <input type="text"
-                        name="escola"
-                        placeholder="Escola"
-                        maxLength="4"
-                        value={state.escola}
-                        onChange={handleChange} />
+
+                    <select name="school_id" defaultValue="escola" onChange={handleChange}>
+                        <option value="escola" disabled>Escola</option>
+                        {
+                            schools.map(school => (
+                                <option value={school.id} key={school.id} className="text">{school.name}</option>
+
+                            ))}
+                    </select>
                     <input type="text"
                         placeholder="Quantidade"
                         maxLength="5"

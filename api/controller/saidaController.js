@@ -10,19 +10,20 @@ module.exports = {
     async create(req, res) {
 
        
-        const { id_school, quantidade, data } = req.body;
-        const [id] = await connection('saida').insert({
-            id_school,
+       const { school_id, quantidade, data } = req.body;
+       
+       await connection('saida').insert({
+            school_id,
             quantidade,
             data
         })
-        return res.json({ "message": "Saída Realizada!" })
+       return res.json({ "message": "Saída Realizada!" })
     },
     async delete(req, res) {
         const { id } = req.params;
         // const ong_id = req.headers.authorization;
 
-        const production = await connection('saida')
+       await connection('saida')
             .where('id', id)
             // .select('ong_id')
             .first();

@@ -3,7 +3,7 @@ const connection = require('../../database/connection')
 module.exports = {
 
     async index(req, res)  {
-        const school =  await connection('school').select('*');
+        const school =  await connection('school').select('*').orderBy('name');
         return res.json(school);
      },
 
