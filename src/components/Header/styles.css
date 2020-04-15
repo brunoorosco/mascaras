@@ -1,0 +1,12 @@
+.header-content .header{
+    font-size: 25px;
+    font-weight: 700;
+    color: azure;
+    /* align-items: center; */
+    /* align-content: center; */
+    text-align: center;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background: rgba(219, 5, 5, 0.829);
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import DatePicker from "react-datepicker";
 import moment from 'moment'
 import { Link, useHistory } from 'react-router-dom'
+import Header from '../../components/Header'
 
 import api from '../../services/api'
 
@@ -29,18 +30,18 @@ export default function Producao() {
 
         console.log(data);
         try {
-                await api.post('production', data, {
-                    headers: {
-                 //       Authorization: ongId,
-                    }
+            await api.post('production', data, {
+                headers: {
+                    //       Authorization: ongId,
                 }
-
-                )
-                 history.push('/dashboard')
-            } catch (error) {
-                alert(`Erro ao cadastrar ${error}`)
-
             }
+
+            )
+            history.push('/dashboard')
+        } catch (error) {
+            alert(`Erro ao cadastrar ${error}`)
+
+        }
 
     }
     function handleData(data) {
@@ -65,6 +66,8 @@ export default function Producao() {
         console.log(value)
     }
     return (
+        <>
+        <Header />
         <div className="producao-container">
             <div className="content">
                 <header>
@@ -82,7 +85,7 @@ export default function Producao() {
                         placeholder="Quantidade"
                         value={state.quantidade}
                         onChange={handleChange} />
-                 
+
                     <DatePicker
                         name="data"
                         showPopperArrow={false}
@@ -95,6 +98,7 @@ export default function Producao() {
                 </form>
             </div>
         </div>
+        </>
     )
 
 }

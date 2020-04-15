@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import Header from '../../components/Header'
 
 import api from '../../services/api';
 
@@ -40,6 +41,8 @@ export default function Dashboard() {
     }, [])
 
     return (
+        <>
+        <Header />
         <div className="container-dashboard">
             <div className="content">
                 <div className="bots">
@@ -85,5 +88,6 @@ export default function Dashboard() {
                 </div>
             </div>
         </div>
+        </>
     )
 }

@@ -79,19 +79,12 @@ export default function Saida() {
         <div className="container-saida">
             <div className="content">
                 <header>
-                    <p>Saída de Mercadoria</p>
+                    <p>Cadastro de Escola</p>
                     <img src={stock} width={125} alt="" />
                 </header>
                 <form onSubmit={handleSubmit}>
 
-                    <select name="school_id" defaultValue="escola" onChange={handleChange}>
-                        <option value="escola" disabled>Escola</option>
-                        {
-                            schools.map(school => (
-                                <option value={school.id} key={school.id} className="text">{school.name}</option>
-
-                            ))}
-                    </select>
+                  
                     <input type="text"
                         placeholder="Quantidade"
                         maxLength="5"
@@ -99,13 +92,7 @@ export default function Saida() {
                         value={state.quantidade}
                         onChange={handleChange} />
 
-                    <DatePicker
-                        name="data"
-                        showPopperArrow={false}
-                        selected={startDate}
-                        onChange={date => handleData(date)}
-                        dateFormat="dd/MM/yyyy"
-                    />
+                   
 
                     <button className="button" type="submit">Enviar</button>
                 </form>
