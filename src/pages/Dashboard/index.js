@@ -8,11 +8,9 @@ import './styles.css';
 export default function Dashboard() {
 
     const [stocks, setStock] = useState([])
-    const [state, setState] = useState({
-        estoque: [],
-        quantidade: "",
-        data: "",
-    })
+    const [productions, setProduction] = useState([])
+    const [saidas, setSaida] = useState([])
+   
     const history = useHistory();
 
     useEffect(() => {
@@ -22,7 +20,22 @@ export default function Dashboard() {
             }
         }).then(response => {
             setStock(response.data)
-
+        })
+        
+        api.get('production').then(response => {
+            setProduction(response.data)
+        })
+    }, [])
+    useEffect(() => {  
+        api.get('production').then(response => {
+            setProduction(response.data)
+            console.log(response.data)
+        })
+    }, [])
+    useEffect(() => {  
+        api.get('saida').then(response => {
+            setSaida(response.data)
+            console.log(response.data)
         })
     }, [])
 
@@ -39,21 +52,27 @@ export default function Dashboard() {
 
                 <div className="min-100">
                     <p className="title"> Produzido</p>
-                    <p> {}</p>
+                    {productions.map(production => (
+                        <p className="text" key="1">{production.q}</p>
+
+                    ))}
                 </div>
 
                 <div className="min-100">
                     <p className="title"> Saída</p>
-                    <p> {}</p>
+                    {saidas.map(saida => (
+                        <p className="text" key="1">{saida.q}</p>
+
+                    ))}
                 </div>
 
                 <div className="min-100">
                     <p className="title"> Estoque</p>
                     {stocks.map(stock => (
-                        <p  className="text" key={stock.id}>{stock.quantidade}</p>
+                        <p className="text" key="1">{stock.q}</p>
 
                     ))}
-                  
+
                 </div>
 
             </div>

@@ -82,13 +82,7 @@ export default function Producao() {
                         placeholder="Quantidade"
                         value={state.quantidade}
                         onChange={handleChange} />
-                    {/* <DatePicker
-                        name="data"
-                        showPopperArrow={false}
-                        selected={state.data}
-                        onChange={handleChange}
-                        dateFormat="dd/MM/yyyy"
-                    /> */}
+                 
                     <DatePicker
                         name="data"
                         showPopperArrow={false}
