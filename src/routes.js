@@ -5,6 +5,7 @@ import Logon from './pages/Logon';
 import Producao from './pages/Producao';
 import Saida from './pages/Saida';
 import Dashboard from './pages/Dashboard';
+import School from './pages/School';
 
 export default function Routes() {
     return (
@@ -14,6 +15,7 @@ export default function Routes() {
                 <Route path="/producao" component={Producao} exact/>
                 <Route path="/saida" component={Saida} exact/>
                 <Route path="/dashboard" component={Dashboard} exact/>
+                <Route path="/school" component={School} exact/>
             </Switch>
         </BrowserRouter>
     );

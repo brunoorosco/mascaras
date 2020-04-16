@@ -14,29 +14,16 @@ import stock from '../../assets/stock.svg'
 export default function Saida() {
 
     const history = useHistory();
-    const [startDate, setStartDate] = useState(new Date());
-    const [schools, setSchools] = useState([]);
-
-    const [state, setState] = useState({
-        quantidade: "",
-        data: moment(new Date()).format("DD-MM-YYYY"),
-        school_id: ""
-    })
-
-    useEffect(() => {
-        api.get('school').then(response => {
-            setSchools(response.data)
-        })
-    }, [setSchools])
+    const [schools, setSchools] = useState("");
 
     async function handleSubmit(e) {
 
         e.preventDefault();
-        const data = state
+        const data = schools
         console.log(data);
 
         try {
-            await api.post('saida', data, {
+            await api.post('school', data, {
                 headers: {
                     //       Authorization: ongId,
                 }
@@ -51,53 +38,41 @@ export default function Saida() {
 
     }
 
-    function handleData(data) {
-
-        setStartDate(data)
-        setState({
-            ...state,
-            data: moment(data).format("DD-MM-YYYY")
-        })
-        console.log(moment(data).format("DD-MM-YYYY"))
-        // setStartDate(evt.target.value)
-    }
-
     function handleChange(evt) {
         evt.preventDefault();
 
         const value = evt.target.value;
-        setState({
-            ...state,
-            [evt.target.name]: value
-        });
+
+       setSchools : value
+
         console.log(value)
     }
 
     return (
         <>
-        <Header />
-        <div className="container-saida">
-            <div className="content">
-                <header>
-                    <p>Cadastro de Escola</p>
-                    <img src={stock} width={125} alt="" />
-                </header>
-                <form onSubmit={handleSubmit}>
+            <Header />
+            <div className="container-saida">
+                <div className="content">
+                    <header>
+                        <p>Cadastro de Escola</p>
+                        <img src={stock} width={125} alt="" />
+                    </header>
+                    <form onSubmit={handleSubmit}>
 
-                  
-                    <input type="text"
-                        placeholder="Quantidade"
-                        maxLength="5"
-                        name="quantidade"
-                        value={state.quantidade}
-                        onChange={handleChange} />
 
-                   
+                        <input type="text"
+                            placeholder="CFP da Escola"
+                            maxLength="5"
+                            name="school"
+                            value={schools}
+                            onChange={handleChange} />
 
-                    <button className="button" type="submit">Enviar</button>
-                </form>
+
+
+                        <button className="button" type="submit">Enviar</button>
+                    </form>
+                </div>
             </div>
-        </div>
         </>
     )
 }
