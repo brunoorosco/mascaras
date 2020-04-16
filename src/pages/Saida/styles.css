@@ -9,6 +9,9 @@
     margin-top: 10px;
 }
 
+.container-saida .content form select {
+overflow-y:auto;}
+
 .container-saida .content header{
     display: flex;
     align-items: center;

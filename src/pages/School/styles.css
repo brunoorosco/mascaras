@@ -1,0 +1,26 @@
+.container-school .content form {
+    width: 100%;
+    max-width: 450px;
+    margin: 20px auto;
+}
+
+.container-school .content form input{
+    margin-top: 10px;
+}
+
+.container-school .content header{
+    width: 450px;
+    margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 60px;
+    font-weight: 700;
+    font-size: 28px;
+    margin-right: auto;
+    margin-left: auto;
+    justify-content: space-around;
+}
+.container-school .content p{
+    margin-top: 25px;
+}

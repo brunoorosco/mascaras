@@ -9,17 +9,19 @@ import "react-datepicker/dist/react-datepicker.css";
 import api from '../../services/api'
 
 import './styles.css';
-import stock from '../../assets/stock.svg'
+import school from '../../assets/school.png'
 
 export default function Saida() {
 
     const history = useHistory();
-    const [schools, setSchools] = useState("");
+    const [schools, setSchools] = useState([]);
 
     async function handleSubmit(e) {
 
         e.preventDefault();
-        const data = schools
+        const data = {
+            name: schools
+        }
         console.log(data);
 
         try {
@@ -27,45 +29,41 @@ export default function Saida() {
                 headers: {
                     //       Authorization: ongId,
                 }
-            }
+            }).then(response => {
+                alert(response.data.message)
+            })
+            setSchools("")
 
-            )
-            history.push('/dashboard')
+            // history.push('/dashboard')
         } catch (error) {
             alert(`Erro ao cadastrar ${error}`)
-
         }
-
     }
 
     function handleChange(evt) {
         evt.preventDefault();
-
         const value = evt.target.value;
-
-       setSchools : value
-
-        console.log(value)
+        setSchools(value)
+        //  console.log(value)
     }
 
     return (
         <>
             <Header />
-            <div className="container-saida">
+            <div className="container-school">
                 <div className="content">
                     <header>
                         <p>Cadastro de Escola</p>
-                        <img src={stock} width={125} alt="" />
+                        <img src={school} width={125} alt="" />
                     </header>
                     <form onSubmit={handleSubmit}>
-
-
                         <input type="text"
                             placeholder="CFP da Escola"
                             maxLength="5"
                             name="school"
                             value={schools}
-                            onChange={handleChange} />
+                            onChange={handleChange}
+                        />
 
 
 

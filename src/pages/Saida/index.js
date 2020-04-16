@@ -84,7 +84,7 @@ export default function Saida() {
                 </header>
                 <form onSubmit={handleSubmit}>
 
-                    <select name="school_id" defaultValue="escola" onChange={handleChange}>
+                    <select name="school_id" defaultValue="escola" onChange={handleChange}  autosize={true}>
                         <option value="escola" disabled>Escola</option>
                         {
                             schools.map(school => (
