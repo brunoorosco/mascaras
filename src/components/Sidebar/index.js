@@ -1,6 +1,5 @@
 
 import { render } from 'react-dom';
-
 import React from 'react'
 import {
     BrowserRouter as Router,
@@ -8,8 +7,12 @@ import {
     Link
 } from 'react-router-dom'
 
-import Logon from '../Logon'
-import Header from '../Header';
+import Dashboard from '../../pages/Dashboard';
+import Saida from '../../pages/Saida'
+import Producao from '../../pages/Producao';
+
+import './styles.css'
+
 
 // Each logical "route" has two components, one for
 // the sidebar and one for the main area. We want to
@@ -20,52 +23,54 @@ const routes = [
         path: '/',
         exact: true,
         sidebar: () => <div>home!</div>,
-        main: () => <div>{Logon()}</div>
+        main: () => <div>{Dashboard()}</div>
     },
     {
-        path: '/dashboard',
+        path: '/saida',
         sidebar: () => <div>dashboard!</div>,
-        main: () => <div>{Header()}</div>
+        main: () => <div>{Saida()}</div>
     },
     {
-        path: '/shoelaces',
+        path: '/producao',
         sidebar: () => <div>shoelaces!</div>,
-        main: () => <h2>Shoelaces</h2>
+        main: () => <div>{Producao()}</div>
     }
 ]
 
-const SidebarExample = () => (
-    <Router>
-        <div style={{ display: 'flex' }}>
-            <div style={{
-                padding: '10px',
-                width: '40%',
-                background: '#f0f0f0'
-            }}>
-                <ul style={{ listStyleType: 'none', padding: 0 }}>
-                    <li><Link to="/" >Home</Link></li>
-                    <li><Link to="/dashboard">Dashboard</Link></li>
-                    <li><Link to="/shoelaces">Shoelaces</Link></li>
-                </ul>
+const Sidebar = () => (
+    <div className="sidebar-container">
+        <Router>
+            <div style={{ display: 'flex' }}>
+                <div style={{
+                    padding: '10px',
+                    width: '40%',
+                    background: '#f0f0f0'
+                }}>
+                    <ul style={{ listStyleType: 'none', padding: 0 }}>
+                        <li><Link to="/" >Dashboard</Link></li>
+                        <li><Link to="/producao">Producao</Link></li>
+                        <li><Link to="/saida">Saída</Link></li>
+                    </ul>
 
-                {routes.map((route, index) => (
-                    // You can render a <Route> in as many places
-                    // as you want in your app. It will render along
-                    // with any other <Route>s that also match the URL.
-                    // So, a sidebar or breadcrumbs or anything else
-                    // that requires you to render multiple things
-                    // in multiple places at the same URL is nothing
-                    // more than multiple <Route>s.
-                    <Route
-                        key={index}
-                        path={route.path}
-                        exact={route.exact}
-                        component={route.sidebar}
-                    />
-                ))}
+                    {routes.map((route, index) => (
+                        // You can render a <Route> in as many places
+                        // as you want in your app. It will render along
+                        // with any other <Route>s that also match the URL.
+                        // So, a sidebar or breadcrumbs or anything else
+                        // that requires you to render multiple things
+                        // in multiple places at the same URL is nothing
+                        // more than multiple <Route>s.
+                        <Route
+                            key={index}
+                            path={route.path}
+                            exact={route.exact}
+                            component={route.sidebar}
+                        />
+                    ))}
+                </div>
             </div>
 
-            <div style={{ flex: 1, padding: '10px' }}>
+            <div className="content" style={{ flex: 1, padding: '10px' }}>
                 {routes.map((route, index) => (
                     // Render more <Route>s with the same paths as
                     // above, but different components this time.
@@ -77,9 +82,9 @@ const SidebarExample = () => (
                     />
                 ))}
             </div>
-        </div>
-    </Router>
+        </Router>
+    </div >
 )
 
-export default SidebarExample
+export default Sidebar
 

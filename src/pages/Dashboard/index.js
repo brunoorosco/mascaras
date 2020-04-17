@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import Header from '../../components/Header'
+// import Sidebar from '../../components/Sidebar'
 
 import api from '../../services/api';
 
@@ -43,6 +44,7 @@ export default function Dashboard() {
     return (
         <>
         <Header />
+      
         <div className="container-dashboard">
             <div className="content">
                 <div className="bots">

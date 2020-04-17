@@ -6,6 +6,7 @@ import Producao from './pages/Producao';
 import Saida from './pages/Saida';
 import Dashboard from './pages/Dashboard';
 import School from './pages/School';
+import Sidebar from './components/Sidebar'
 
 export default function Routes() {
     return (
@@ -16,6 +17,7 @@ export default function Routes() {
                 <Route path="/saida" component={Saida} exact/>
                 <Route path="/dashboard" component={Dashboard} exact/>
                 <Route path="/school" component={School} exact/>
+                <Route path="/sidebar" component={Sidebar} exact/>
             </Switch>
         </BrowserRouter>
     );

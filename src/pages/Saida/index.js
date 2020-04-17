@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Link, useHistory, } from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import moment from 'moment'
+// import Select from 'react-select';
+
 import Header from '../../components/Header'
 
 import "react-datepicker/dist/react-datepicker.css";
@@ -75,42 +77,47 @@ export default function Saida() {
 
     return (
         <>
-        <Header />
-        <div className="container-saida">
-            <div className="content">
-                <header>
-                    <p>Saída de Mercadoria</p>
-                    <img src={stock} width={125} alt="" />
-                </header>
-                <form onSubmit={handleSubmit}>
+            <Header />
+            <div className="container-saida">
+                <div className="content">
+                    <header>
+                        <p>Saída de Mercadoria</p>
+                        <img src={stock} width={125} alt="" />
+                    </header>
+                    <form onSubmit={handleSubmit}>
+                        {/* <Select
+                           // value={schools}
+                            onChange={handleChange}
+                            options={schools}
+                        /> */}
 
-                    <select name="school_id" defaultValue="escola" onChange={handleChange}  autosize={true}>
-                        <option value="escola" disabled>Escola</option>
-                        {
-                            schools.map(school => (
-                                <option value={school.id} key={school.id} className="text">{school.name}</option>
+                        <select name="school_id" defaultValue="escola" onChange={handleChange} autosize={true}>
+                            <option value="escola" disabled>Escola</option>
+                            {
+                                schools.map(school => (
+                                    <option value={school.id} key={school.id} className="text">{school.name}</option>
 
-                            ))}
-                    </select>
-                    <input type="text"
-                        placeholder="Quantidade"
-                        maxLength="5"
-                        name="quantidade"
-                        value={state.quantidade}
-                        onChange={handleChange} />
+                                ))}
+                        </select>
+                        <input type="text"
+                            placeholder="Quantidade"
+                            maxLength="5"
+                            name="quantidade"
+                            value={state.quantidade}
+                            onChange={handleChange} />
 
-                    <DatePicker
-                        name="data"
-                        showPopperArrow={false}
-                        selected={startDate}
-                        onChange={date => handleData(date)}
-                        dateFormat="dd/MM/yyyy"
-                    />
+                        <DatePicker
+                            name="data"
+                            showPopperArrow={false}
+                            selected={startDate}
+                            onChange={date => handleData(date)}
+                            dateFormat="dd/MM/yyyy"
+                        />
 
-                    <button className="button" type="submit">Enviar</button>
-                </form>
+                        <button className="button" type="submit">Enviar</button>
+                    </form>
+                </div>
             </div>
-        </div>
         </>
     )
 }
