@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom'
+import Helmet from 'react-helmet'
+
 import Header from '../../components/Header'
 // import Sidebar from '../../components/Sidebar'
 
@@ -43,11 +45,12 @@ export default function Dashboard() {
 
     return (
         <>
+        {/* <Helmet title="Home - React Router com Helmet" /> */}
         <Header />
-      
+              
         <div className="container-dashboard">
             <div className="content">
-                <div className="bots">
+                {/* <div className="bots">
                     <Link className="link" to="/producao" >
                         Produção
                  </ Link>
@@ -58,7 +61,7 @@ export default function Dashboard() {
                     <Link className="link" to="/school" >
                         Cadastro de Escola
                 </ Link>
-                </div>
+                </div> */}
                 <div className="view">
 
 

@@ -3,6 +3,7 @@ import { Link, useHistory, } from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import moment from 'moment'
 import Header from '../../components/Header'
+import Alert from '../../components/Alert'
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -15,6 +16,8 @@ export default function Saida() {
 
     const history = useHistory();
     const [schools, setSchools] = useState([]);
+    const [messageAlert, messageAlertSet] = useState([]);
+    const [alert, alertSet] = useState("none");
 
     async function handleSubmit(e) {
 
@@ -30,13 +33,14 @@ export default function Saida() {
                     //       Authorization: ongId,
                 }
             }).then(response => {
-                alert(response.data.message)
+                messageAlertSet(response.data.message)
+                alertSet(true)
             })
             setSchools("")
 
             // history.push('/dashboard')
         } catch (error) {
-            alert(`Erro ao cadastrar ${error}`)
+            messageAlertSet(`Erro ao cadastrar ${error}`)
         }
     }
 
@@ -50,6 +54,7 @@ export default function Saida() {
     return (
         <>
             <Header />
+            <Alert color="info" text={messageAlert} view={alert}/>
             <div className="container-school">
                 <div className="content">
                     <header>

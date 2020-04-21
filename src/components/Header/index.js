@@ -8,9 +8,10 @@ export default function Header(){
         <>
         <div className="header-content">
             <header className="header">
-               Plano de Controle de Produção - PCP Máscaras
+               Plano de Controle de Produção
             </header>
         </div>
         </>
     )
+    
 }
