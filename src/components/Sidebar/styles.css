@@ -58,6 +58,11 @@
     margin: 0 3px;
    
   }
+  .sidebar-container .sidebar .link .icons{
+   margin-right: 5px;
+   position: relative;
+   top: 3px;
+  }
   
 
 

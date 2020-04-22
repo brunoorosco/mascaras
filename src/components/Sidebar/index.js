@@ -5,7 +5,8 @@ import {
     Route,
     Link
 } from 'react-router-dom'
-//import { FiPower, FiTrash2 } from ''
+import { FiPower, FiTrash2 } from 'react-icons/fi'
+import {FaChartLine} from 'react-icons/fa'
 
 import Dashboard from '../../pages/Dashboard';
 import Saida from '../../pages/Saida'
@@ -51,10 +52,10 @@ const Sidebar = () => (
                     <h2>PCP Máscaras</h2>
                 </header>
                 <ul>
-                    <Link className="link" to="/" >  Dashboard</Link>
-                    <Link className="link" to="/school" >  Cadastro de Escola</Link>
-                    <Link className="link" to="/producao">Producao</Link>
-                    <Link className="link" to="/saida">Saída</Link>
+                    <Link className="link" to="/" ><FaChartLine size={20}className="icons"/> Dashboard</Link>
+                    <Link className="link" to="/school" ><FaChartLine size={20}className="icons"/>Cadastro de Escola</Link>
+                    <Link className="link" to="/producao"><FaChartLine size={20}className="icons"/>Producao</Link>
+                    <Link className="link" to="/saida"><FaChartLine size={20}className="icons"/>Saída</Link>
 
 
                 </ul>
