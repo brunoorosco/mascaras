@@ -1,33 +1,20 @@
-.container-saida .content form {
-    width: 100%;
-    max-width: 450px;
-
-    margin: 20px auto;
-}
-
-.container-saida .content .line{
-    display: flex;
-    flex-direction: row;
-}
-
-.container-saida .content .line input{
-  flex: 3;
-}
-
-.container-saida .content .line select{
-    flex:2;
-  }
-
-.container-saida .content form input {
+.container-material .content form input {
     margin-top: 10px;
 }
 
-.container-saida .content form select {
+.container-material .content form select {
     margin-top: 10px;
     overflow-y:auto;
 }
+.container-material .content form span {
+    margin-top: 10px;
+}
+.container-material .content form .select {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
 
-.container-saida .content header{
+.container-material .content header{
     display: flex;
     align-items: center;
     justify-content: center;

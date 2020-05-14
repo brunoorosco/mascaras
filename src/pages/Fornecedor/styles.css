@@ -1,32 +1,20 @@
-.container-fornecedor .content form {
+.container .container-fornecedor .content form {
     width: 100%;
-    max-width: 700px;
     margin: 20px auto;
-    display: flex;
-    flex-wrap: wrap;
 }
-
-.container-fornecedor .content .line{
-   
-    flex-direction: row;
-}
-
-.container-fornecedor .content .line input{
-    flex: 2;
-  }
   
-  .container-fornecedor .content .line button{
-      flex:1;
+.container .container-fornecedor .content button{
+      /* flex:1; */
       margin-top: 10px !important;
-      margin-left: 5px;
       line-height: 10px;
+
     }
 
-.container-fornecedor .content form input{
+    .container .container-fornecedor .content form input{
     margin-top: 10px;
 }
 
-.container-fornecedor .content header{
+.container .container-fornecedor .content header{
     width: 450px;
     margin-top: 40px;
     display: flex;
@@ -39,7 +27,7 @@
     margin-left: auto;
     justify-content: space-around;
 }
-.container-fornecedor .content p{
+.container .container-fornecedor .content p{
     margin-top: 25px;
 }
 

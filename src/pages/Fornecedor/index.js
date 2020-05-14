@@ -20,10 +20,10 @@ export default function Fornecedor() {
         cnpj: "",
         nome: "",
         email: "",
-        numero: "",
+        number: "",
         contato: "",
-        logradouro: "",
-        municipio: "",
+        street: "",
+        city: "",
         uf: "",
         telefone: "",
         celular: ""
@@ -41,12 +41,12 @@ export default function Fornecedor() {
                 setVars({
                     ...vars,
                     nome: response.data.nome,
-                    numero: response.data.numero,
-                    contato: response.data.contato,
+                    number: response.data.numero,
                     telefone: response.data.telefone,
-                    logradouro: response.data.logradouro,
-                    municipio: response.data.municipio,
+                    street: response.data.logradouro,
+                    city: response.data.municipio,
                     uf: response.data.uf,
+                   
                 })
 
             })
@@ -60,19 +60,19 @@ export default function Fornecedor() {
     async function handleSubmit(e) {
 
         e.preventDefault();
-        const data = {
-            cnpj: vars.cnpj
-        }
+        const data = vars;
+        
         console.log(data);
 
         try {
-            await api.get('cnpj/' + data.cnpj).then(response => {
+            await api.get('fornecedor', data, {
+                headers: {
+                    //       Authorization: ongId,
+                }
+            }).then(response => {
                 console.log(response.data)
-
-
             })
-
-            // history.push('/dashboard')
+             history.push('/fornecedor')
         } catch (error) {
             messageAlertSet(`Erro ao cadastrar ${error}`)
         }
@@ -93,7 +93,7 @@ export default function Fornecedor() {
         <>
             <Header />
             <Alert color="info" text={messageAlert} view={alert} />
-            <Container>
+            <div className="container">
                 <div className="container-fornecedor">
                     <div className="content">
                         <header>
@@ -101,47 +101,135 @@ export default function Fornecedor() {
                         </header>
 
                         <form onSubmit={handleSubmit}>
-                                          <div className="line">
-                                        <input type="text"
-                                            placeholder="Razão Social"
-                                            name="nome"
-                                            value={vars.nome}
-                                            onChange={handleChange}
-                                        />
-                                        <input type="text"
+
+                            <div class="row form-group">
+                                <div class="col-3 input-group">
+
+                                    <div className="input-group">
+                                        <input
                                             placeholder="CNPJ"
                                             maxLength="14"
                                             name="cnpj"
                                             value={vars.cnpj}
                                             onChange={handleChange}
+                                            className="form-control"
                                         />
-                                        <button className="button" type="button" onClick={handleCnpj}><FiSearch size={20} className="icons" /></button>
+                                        <div className="input-group-append">
+                                            <button
+                                                className="btn btn-success"
+                                                type="button"
+                                                onClick={handleCnpj}>
+                                                <FiSearch size={17} className="icons" />
+                                            </button>
+                                        </div>
                                     </div>
+                                </div>
+                                <div className="col">
+                                    <input
+                                        type="text"
+                                        placeholder="Razão Social"
+                                        name="nome"
+                                        value={vars.nome}
+                                        onChange={handleChange}
+                                        className="form-control"
+                                    />
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div className="col">
+                                    <input
+                                        type="text"
+                                        placeholder="Rua/Avenida/Praça"
+                                        name="street"
+                                        value={vars.street}
+                                        onChange={handleChange}
+                                        className="form-control"
+                                    />
+                                </div>
+
+                                <div className="col-2">
+                                    <input
+                                        type="text"
+                                        placeholder="Número"
+                                        maxLength="5"
+                                        name="number"
+                                        value={vars.number}
+                                        onChange={handleChange}
+                                        className="form-control"
+                                    />
+                                </div>
+                                <div className="col">
+                                    <input
+                                        type="text"
+                                        placeholder="Cidade"
+                                        name="city"
+                                        value={vars.city}
+                                        onChange={handleChange}
+                                        className="form-control"
+                                    />
+                                </div>
+                                <div className="col-1">
+                                    <input
+                                        type="text"
+                                        placeholder="UF"
+                                        name="uf"
+                                        value={vars.uf}
+                                        onChange={handleChange}
+                                        className="form-control"
+                                    />
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+
+                                <div className="col-2">
+                                    <input type="text"
+                                        placeholder="Telefone"
+                                        name="telefone"
+                                        value={vars.telefone}
+                                        onChange={handleChange}
+                                        className="form-control"
+                                    />
+                                </div>
+                                <div className="col-2">
+                                    <input type="text"
+                                        placeholder="Celular"
+                                        name="celular"
+                                        value={vars.celular}
+                                        onChange={handleChange}
+                                        className="form-control"
+                                    />
+                                </div>
+                                <div className="col-3">
+                                    <input 
+                                       type="text"
+                                        placeholder="Contato"
+                                        name="contato"
+                                        value={vars.contato}
+                                        onChange={handleChange}
+                                        className="form-control"
+                                    />
+                                </div>
+                                <div className="col">
+                                    <input 
+                                        type="text"
+                                        placeholder="E-mail"
+                                        name="email"
+                                        value={vars.email}
+                                        onChange={handleChange}
+                                        className="form-control"
+                                    />
+                                </div>
+                            </div>
 
 
 
-                                    <div className="line">
-                                        <input type="text"
-                                            placeholder="Telefone"
-                                            name="telefone"
-                                            value={vars.telefone}
-                                            onChange={handleChange}
-                                        />
-                                        <input type="text"
-                                            placeholder="Celular"
-                                            name="celular"
-                                            value={vars.celular}
-                                            onChange={handleChange}
-                                        />
-                                    </div>
-
-
-
-                                    <button className="button" type="submit">Cadastrar</button>
+                            <button className="button" type="submit">Cadastrar</button>
                         </form>
                     </div>
                 </div>
-            </Container>
+            </div>
+
         </>
     )
 }

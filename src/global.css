@@ -14,7 +14,7 @@ body{
 }
 
 input, button, textarea, select {
-    font: 400 14px Roboto, sans-serif;
+    font: 400 15px Roboto, sans-serif ;
 }
 
 button{
@@ -27,7 +27,8 @@ form input {
     color: #333 ;
     border: 1px solid #dcdce6;
     border-radius: 8px;
-    padding: 0 15px;
+    padding: 0 5px !important;
+   
 }
 form select {
     width: 100% !important;
