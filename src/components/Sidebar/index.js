@@ -12,6 +12,9 @@ import Dashboard from '../../pages/Dashboard';
 import Saida from '../../pages/Saida'
 import Producao from '../../pages/Producao';
 import School from '../../pages/School';
+import Product from '../../pages/Produtos/Cadastro';
+import Material from '../../pages/Material/New';
+import Fornecedor from '../../pages/Fornecedor';
 
 import './styles.css'
 
@@ -41,6 +44,22 @@ const routes = [
         path: '/school',
         sidebar: () => <div>shoelaces!</div>,
         main: () => <div>{School()}</div>
+    },
+    {
+        path: '/product',
+        exact: true,
+        sidebar: () => <div>home!</div>,
+        main: () => <div>{Product()}</div>
+    },
+    {
+        path: '/material',
+        sidebar: () => <div>dashboard!</div>,
+        main: () => <div>{Material()}</div>
+    },
+    {
+        path: '/fornecedor',
+        sidebar: () => <div>dashboard!</div>,
+        main: () => <div>{Fornecedor()}</div>
     }
 ]
 
@@ -56,6 +75,9 @@ const Sidebar = () => (
                     <Link className="link" to="/school" ><FaChartLine size={20}className="icons"/>Cadastro de Escola</Link>
                     <Link className="link" to="/producao"><FaChartLine size={20}className="icons"/>Producao</Link>
                     <Link className="link" to="/saida"><FaChartLine size={20}className="icons"/>Saída</Link>
+                    <Link className="link" to="/product"><FaChartLine size={20}className="icons"/>Produto</Link>
+                    <Link className="link" to="/material"><FaChartLine size={20}className="icons"/>Material</Link>
+                    <Link className="link" to="/fornecedor"><FaChartLine size={20}className="icons"/>Fornecedor</Link>
 
 
                 </ul>

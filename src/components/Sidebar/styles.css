@@ -1,5 +1,5 @@
 .sidebar-container {
-    box-shadow: 5px 5px 10px rgb(221, 221, 221);   
+    /* box-shadow: 5px 5px 10px rgb(221, 221, 221);    */
     height: 100vh;
     width: 100%;    
     display: flex;
@@ -48,7 +48,8 @@
     text-decoration: none;
     display: block;
     transition: background 0.5s; 
-    color:#000
+    color:#000;
+    line-height: 22px;
   }
 
   .sidebar-container .sidebar .link:hover{

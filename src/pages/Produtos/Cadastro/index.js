@@ -4,24 +4,24 @@ import DatePicker from "react-datepicker";
 import moment from 'moment'
 // import Select from 'react-select';
 
-import Header from '../../components/Header'
+import Header from '../../../components/Header'
 
 import "react-datepicker/dist/react-datepicker.css";
 
-import api from '../../services/api'
+import api from '../../../services/api'
 
 import './styles.css';
-import stock from './../../assets/stock.svg'
+import stock from './../../../assets/stock.svg'
 
 export default function Saida() {
 
     const history = useHistory();
-    const [startDate, setStartDate] = useState(new Date());
     const [schools, setSchools] = useState([]);
 
     const [state, setState] = useState({
         quantidade: "",
-        data: moment(new Date()).format("DD-MM-YYYY"),
+        code: "",
+        name: "",
         school_id: ""
     })
 
@@ -52,18 +52,6 @@ export default function Saida() {
         }
 
     }
-
-    function handleData(data) {
-
-        setStartDate(data)
-        setState({
-            ...state,
-            data: moment(data).format("DD-MM-YYYY")
-        })
-        console.log(moment(data).format("DD-MM-YYYY"))
-        // setStartDate(evt.target.value)
-    }
-
     function handleChange(evt) {
         evt.preventDefault();
 
@@ -81,7 +69,7 @@ export default function Saida() {
             <div className="container-saida">
                 <div className="content">
                     <header>
-                        <p>Saída de Mercadoria</p>
+                        <p>Cadastro de Produto</p>
                         <img src={stock} width={125} alt="" />
                     </header>
                     <form onSubmit={handleSubmit}>
@@ -91,30 +79,40 @@ export default function Saida() {
                             options={schools}
                         /> */}
 
-                        <select name="school_id" defaultValue="escola" onChange={handleChange} autosize={true}>
-                            <option value="escola" disabled>Escola</option>
+                        <input type="text"
+                            placeholder="Código"
+                            name="code"
+                            value={state.code}
+                            onChange={handleChange} />
+                        <input type="text"
+                            placeholder="Descrição"
+                            maxLength="100"
+                            name="description"
+                            value={state.description}
+                            onChange={handleChange} />
+                        <div className="line">
+                            <input type="text"
+                                placeholder="Peso ou metros"
+                                name="tecido"
+                                value={state.name}
+                                onChange={handleChange} />
+                            <select name="tecido" defaultValue="malha" onChange={handleChange} autosize={true}>
+                                <option value="malha" >Kg</option>
+                                <option value="plano" >m</option>
+                            </select>
+                        </div>
+                       
+                        <select name="color" defaultValue="color" onChange={handleChange} autosize={true}>
+                            <option value="color" disabled>Cor</option>
                             {
                                 schools.map(school => (
                                     <option value={school.id} key={school.id} className="text">{school.name}</option>
 
                                 ))}
                         </select>
-                        <input type="text"
-                            placeholder="Quantidade"
-                            maxLength="5"
-                            name="quantidade"
-                            value={state.quantidade}
-                            onChange={handleChange} />
 
-                        <DatePicker
-                            name="data"
-                            showPopperArrow={false}
-                            selected={startDate}
-                            onChange={date => handleData(date)}
-                            dateFormat="dd/MM/yyyy"
-                        />
 
-                        <button className="button" type="submit">Enviar</button>
+                        <button className="button" type="submit">Cadastrar</button>
                     </form>
                 </div>
             </div>
