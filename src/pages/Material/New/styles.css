@@ -1,24 +1,23 @@
-.container-material .content form input {
+.container form input {
     margin-top: 10px;
 }
 
-.container-material .content form select {
+.container form select {
     margin-top: 10px;
     overflow-y:auto;
 }
-.container-material .content form span {
+.container form span {
     margin-top: 10px;
 }
-.container-material .content form .select {
+.container form .select {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
 
-.container-material .content header{
+.container header{
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 60px;
     font-weight: 700;
     font-size: 28px;
 }

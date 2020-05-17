@@ -1,9 +1,6 @@
 .container-dashboard .content{
-    width: 500px;
-    margin: 50px auto;
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    width: 100%;
+    margin: 50px auto;   
 }
 .container-dashboard .content .bots{
     display: flex;

@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react'
 import { Link, useHistory, } from 'react-router-dom'
 import DatePicker from "react-datepicker";
 import moment from 'moment'
-import FormMaterial from './../../../components/FormMaterial'
 // import Select from 'react-select';
 
 import "react-datepicker/dist/react-datepicker.css";
 
-import api from '../../../services/api'
+import api from '../../services/api'
 
-import './styles.css';
-import stock from './../../../assets/stock.svg'
+//import './styles.css';
 
-export default function Material() {
+export default function Material(props) {
+
+    console.log(props)
 
     const history = useHistory();
     const [colors, setcolors] = useState([]);
@@ -30,12 +30,7 @@ export default function Material() {
 
     })
 
-    useEffect(() => {
-        api.get('color').then(response => {
-            setcolors(response.data)
-        })
-    }, [setcolors])
-
+  
     async function handleSubmit(e) {
 
         e.preventDefault();
@@ -80,12 +75,11 @@ export default function Material() {
 
     return (
         <>
-        <FormMaterial/>
-            {/* <div className="container">
+            <div className="container">
 
                 <header>
                     <h4>Cadastro de Produto</h4>
-                    <img src={stock} width={60} alt="" />
+                  
                 </header>
 
                 <form onSubmit={handleSubmit}>
@@ -186,7 +180,7 @@ export default function Material() {
                     </div>
                     <button className="button" type="submit">Cadastrar</button>
                 </form>
-            </div> */}
+            </div>
 
         </>
     )

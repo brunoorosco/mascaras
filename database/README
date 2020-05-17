@@ -1,0 +1,9 @@
+para criação das tabelas usar o comando
+
+- npx knex migrate:make nome_da_Tabela
+
+depois que criou a tabela no arquivo gerado
+- npx knex migrate:latest
+
+função roolback desfaz a ultima tabela criada ou a ultima latest realizada
+- npx knex migrate:rollback

@@ -1,33 +1,31 @@
-.container .container-fornecedor .content form {
+.container .container-fornecedor form {
     width: 100%;
-    margin: 20px auto;
 }
   
-.container .container-fornecedor .content button{
+.container .container-fornecedor button{
       /* flex:1; */
       margin-top: 10px !important;
       line-height: 10px;
 
     }
 
-    .container .container-fornecedor .content form input{
+    .container .container-fornecedor form input{
     margin-top: 10px;
 }
 
-.container .container-fornecedor .content header{
+.container .container-fornecedor header{
     width: 450px;
     margin-top: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 60px;
     font-weight: 700;
     font-size: 28px;
     margin-right: auto;
     margin-left: auto;
     justify-content: space-around;
 }
-.container .container-fornecedor .content p{
+.container .container-fornecedor p{
     margin-top: 25px;
 }
 

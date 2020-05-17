@@ -15,6 +15,8 @@ import School from '../../pages/School';
 import Product from '../../pages/Produtos/Cadastro';
 import Material from '../../pages/Material/New';
 import Fornecedor from '../../pages/Fornecedor';
+import newFornecedor from '../../pages/Fornecedor/New';
+import Estoque from '../../pages/EstoqueGeral';
 
 import './styles.css'
 
@@ -49,17 +51,32 @@ const routes = [
         path: '/product',
         exact: true,
         sidebar: () => <div>home!</div>,
-        main: () => <div>{Product()}</div>
+        main: () => <div>{Product()}</div>,
+        exact: true
     },
     {
         path: '/material',
         sidebar: () => <div>dashboard!</div>,
-        main: () => <div>{Material()}</div>
+        main: () => <div>{Material()}</div>,
+        exact: true
     },
     {
         path: '/fornecedor',
         sidebar: () => <div>dashboard!</div>,
-        main: () => <div>{Fornecedor()}</div>
+        main: () => <div>{Fornecedor()}</div>,
+        exact: true
+    },
+    {
+        path: '/fornecedor/new',
+        sidebar: () => <div>dashboard!</div>,
+        main: () => <div>{newFornecedor()}</div>,
+        exact: true
+    },
+    {
+        path: '/estoque',
+        sidebar: () => <div>dashboard!</div>,
+        main: () => <div>{Estoque()}</div>,
+        exact: true
     }
 ]
 
@@ -68,7 +85,7 @@ const Sidebar = () => (
         <Router>
             <div className="sidebar">
                 <header className="header">
-                    <h2>PCP Máscaras</h2>
+                    <h2>IST</h2>
                 </header>
                 <ul>
                     <Link className="link" to="/" ><FaChartLine size={20}className="icons"/> Dashboard</Link>
@@ -77,7 +94,9 @@ const Sidebar = () => (
                     <Link className="link" to="/saida"><FaChartLine size={20}className="icons"/>Saída</Link>
                     <Link className="link" to="/product"><FaChartLine size={20}className="icons"/>Produto</Link>
                     <Link className="link" to="/material"><FaChartLine size={20}className="icons"/>Material</Link>
-                    <Link className="link" to="/fornecedor"><FaChartLine size={20}className="icons"/>Fornecedor</Link>
+                    <Link className="link" to="/estoque"><FaChartLine size={20}className="icons"/>Estoque</Link>
+                    <Link className="link" to="/fornecedor" ><FaChartLine size={20}className="icons"/>Fornecedor</Link>
+                    <Link className="link" to="/fornecedor/new"><FaChartLine size={20}className="icons"/>Novo Fornecedor</Link>
 
 
                 </ul>
