@@ -31,10 +31,12 @@ export default function Material() {
     })
 
     useEffect(() => {
+
         api.get('color').then(response => {
             setcolors(response.data)
         })
     }, [setcolors])
+
 
     async function handleSubmit(e) {
 
@@ -80,114 +82,7 @@ export default function Material() {
 
     return (
         <>
-        <FormMaterial/>
-            {/* <div className="container">
-
-                <header>
-                    <h4>Cadastro de Produto</h4>
-                    <img src={stock} width={60} alt="" />
-                </header>
-
-                <form onSubmit={handleSubmit}>
-
-                    <div class="row form-group">
-                        <div className="col-2">
-                            <input className="form-control"
-                                type="text"
-                                placeholder="Código do Prod"
-                                name="code"
-                                value={material.code}
-                                onChange={handleChange} />
-                        </div>
-                        <div className="col">
-                            <input className="form-control"
-                                placeholder="Descrição"
-                                maxLength="100"
-                                name="description"
-                                value={material.description}
-                                onChange={handleChange} />
-                        </div>
-                        <div className="col-3">
-                            <div className="input-group">
-                                <input className="form-control"
-                                    placeholder="Peso ou metros"
-                                    name="tecido"
-                                    value={material.uniMed}
-                                    onChange={handleChange} />
-                                <div className="input-group-append select">
-                                    <select name="tecido" defaultValue="malha" onChange={handleChange} autosize={true} className="btn btn-outline-secondary form-control">
-                                        <option value="malha" >Kg</option>
-                                        <option value="plano" >metro(s)</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-2">
-                            <div className="input-group">
-                                <input className="form-control"
-                                    placeholder="Largura"
-                                    name="largura"
-                                    value={material.largura}
-                                    onChange={handleChange} />
-                                <div className="input-group-append select">
-                                    <span className="input-group-text">metro(s)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div className="col-2">
-                            <select name="color" defaultValue="color" onChange={handleChange} autosize={true} className="form-control">
-                                <option value="color" disabled>Cor</option>
-                                {
-                                    colors.map(color => (
-                                        <option value={color.id} key={color.id} className="text">{color.name}</option>
-
-                                    ))}
-                            </select>
-                        </div>
-                        <div className="col-1">
-                            <input
-                                className="form-control"
-                                placeholder="Rend."
-                                name="rendimento"
-                                value={material.rendimento}
-                                onChange={handleChange} />
-                        </div>
-
-                        <div className="col">
-                            <div className="input-group">
-                                <div className="input-group-prepend">
-                                    <span className="input-group-text">Prazo de Entrega</span>
-                                </div>
-
-                                <DatePicker
-                                    name="data"
-                                    showPopperArrow={true}
-                                    selected={startDate}
-                                    onChange={date => handleData(date)}
-                                    dateFormat="dd/MM/yyyy"
-                                    className="form-control"
-                                    placeholder="Prazo de Entrega"
-                                />
-
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div className="col">
-                            <input className="form-control"
-                                type="text"
-                                placeholder="Observação do Produto"
-                                name="observa"
-                                value={material.obser}
-                                onChange={handleChange} />
-                        </div>
-                    </div>
-                    <button className="button" type="submit">Cadastrar</button>
-                </form>
-            </div> */}
-
+            <FormMaterial botao={"Cadastrar"} />
         </>
     )
 }

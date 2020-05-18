@@ -10,9 +10,12 @@ import Producao from '../../pages/Producao';
 import School from '../../pages/School';
 import Product from '../../pages/Produtos/Cadastro';
 import Material from '../../pages/Material/New';
+import updateMaterial from '../../pages/Material/New';
 import Fornecedor from '../../pages/Fornecedor';
 import newFornecedor from '../../pages/Fornecedor/New';
 import Estoque from '../../pages/EstoqueGeral';
+import Users from '../../pages/Users';
+import Produto from '../../pages/Material/Update';
 
 const Content = ({ sidebarIsOpen, toggleSidebar }) => (
   <Container
@@ -28,10 +31,10 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
       <Route exact path="/contact" component={() => "Contact"} />
       <Route exact path="/fornecedor"     component={() => <div>{Fornecedor()}</div>} />
       <Route exact path="/fornecedor/new" component={() => <div>{newFornecedor()}</div>} />
-      <Route exact path="/estoque"     component={() => <div>{Estoque()}</div>} />
-      <Route exact path="/material/new" component={() => <div>{Material()}</div>} />
-      <Route exact path="/material/:id" component={() => <div>{Material(`{$id}`)}</div>} />
-      <Route exact path="/Home-2" component={() => "Home-2"} />
+      <Route exact path="/estoque"     component={Estoque} />
+      <Route exact path="/material/new" component={Material} />
+      <Route exact path="/material/:id" component={Material} />
+      <Route exact path="/produto" component={Produto} />
       <Route exact path="/Home-3" component={() => "Home-3"} />
       <Route exact path="/teste" component={() => "Page-1"} />
       <Route exact path="/Page-2" component={() => "Page-2"} />

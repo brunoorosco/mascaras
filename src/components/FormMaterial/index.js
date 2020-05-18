@@ -12,7 +12,7 @@ import api from '../../services/api'
 
 export default function Material(props) {
 
-    console.log(props)
+    console.log(props.botao)
 
     const history = useHistory();
     const [colors, setcolors] = useState([]);
@@ -178,7 +178,7 @@ export default function Material(props) {
                                 onChange={handleChange} />
                         </div>
                     </div>
-                    <button className="button" type="submit">Cadastrar</button>
+                                    <button className="button" type="submit">{props.botao}</button>
                 </form>
             </div>
 

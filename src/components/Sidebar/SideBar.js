@@ -75,7 +75,7 @@ const submenus = [
     },
     {
       title: "Usuário",
-      target: "/users",
+      target: "/produto",
     },
   ],
   [
