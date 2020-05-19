@@ -3,14 +3,32 @@ const connection = require('../../database/connection')
 module.exports = {
 
     async index(req, res) {
-        const {id } = req.params;
-        const material = await connection('material').where('id',id);
-
+        const { id } = req.query;
+        console.log(id)
+        const     material = await connection('material')
         return res.json(material);
     },
 
     async create(req, res) {
-       
+    
+        const { cnpj,name,street, number, city, state, telephone,celular,contact, email, payment_id } = req.body;
+        const [id] = await connection('material').insert({
+            cnpj,
+            name,
+            street,
+            number,
+            city,
+            state,
+            telephone,
+            celular,
+            contact,
+            email,
+            payment_id,
+       })
+        return res.json({ "message": "material Cadastrado!" })
+    },
+    async edit(req, res) {
+    
         const { cnpj,name,street, number, city, state, telephone,celular,contact, email, payment_id } = req.body;
         const [id] = await connection('material').insert({
             cnpj,

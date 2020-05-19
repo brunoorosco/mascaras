@@ -33,7 +33,7 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
       <Route exact path="/fornecedor/new" component={newFornecedor}/>
       <Route exact path="/estoque"     component={Estoque} />
       <Route exact path="/material/new" component={Material} />
-      <Route exact path="/material/:id" component={Material} />
+      <Route exact path="/material/:id" component={Produto} />
       <Route exact path="/produto" component={Produto} />
       <Route exact path="/Home-3" component={() => "Home-3"} />
       <Route exact path="/teste" component={() => "Page-1"} />

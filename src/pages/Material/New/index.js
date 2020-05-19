@@ -6,14 +6,12 @@ import FormMaterial from './../../../components/FormMaterial'
 // import Select from 'react-select';
 
 import "react-datepicker/dist/react-datepicker.css";
-
 import api from '../../../services/api'
-
 import './styles.css';
-import stock from './../../../assets/stock.svg'
 
-export default function Material() {
-
+export default function Material(props) {
+    const id = props.match.params.id;
+    console.log(id)
     const history = useHistory();
     const [colors, setcolors] = useState([]);
     const [startDate, setStartDate] = useState(new Date());
@@ -32,10 +30,10 @@ export default function Material() {
 
     useEffect(() => {
 
-        api.get('color').then(response => {
-            setcolors(response.data)
+        api.get('material/'+id).then(response => {
+            setMaterial(response.data)
         })
-    }, [setcolors])
+    }, [setMaterial])
 
 
     async function handleSubmit(e) {
@@ -49,9 +47,7 @@ export default function Material() {
                 headers: {
                     //       Authorization: ongId,
                 }
-            }
-
-            )
+            })
             history.push('/dashboard')
         } catch (error) {
             alert(`Erro ao cadastrar ${error}`)
