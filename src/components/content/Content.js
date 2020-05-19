@@ -29,8 +29,8 @@ const Content = ({ sidebarIsOpen, toggleSidebar }) => (
       <Route exact path="/consulta" component={() => "Consulta"} />
       <Route exact path="/faq" component={() => "FAQ"} />
       <Route exact path="/contact" component={() => "Contact"} />
-      <Route exact path="/fornecedor"     component={() => <div>{Fornecedor()}</div>} />
-      <Route exact path="/fornecedor/new" component={() => <div>{newFornecedor()}</div>} />
+      <Route exact path="/fornecedor"     component={Fornecedor}/>
+      <Route exact path="/fornecedor/new" component={newFornecedor}/>
       <Route exact path="/estoque"     component={Estoque} />
       <Route exact path="/material/new" component={Material} />
       <Route exact path="/material/:id" component={Material} />
