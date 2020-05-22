@@ -10,8 +10,10 @@ import api from '../../../services/api'
 import './styles.css';
 
 export default function Material(props) {
+    
     const id = props.match.params.id;
     console.log(id)
+
     const history = useHistory();
     const [colors, setcolors] = useState([]);
     const [startDate, setStartDate] = useState(new Date());

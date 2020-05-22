@@ -16,7 +16,7 @@ export default function Material(props) {
 
     const history = useHistory();
     const [colors, setcolors] = useState([]);
-    const [startDate, setStartDate] = useState(new Date());
+    // const [startDate, setStartDate] = useState(new Date());
 
     const [material, setMaterial] = useState({
         description: "",
@@ -62,9 +62,10 @@ export default function Material(props) {
         });
         console.log(value)
     }
+
     function handleData(data) {
 
-        setStartDate(data)
+        // setStartDate(data)
         setMaterial({
             ...material,
             deadline: moment(data).format("DD-MM-YYYY")
@@ -133,11 +134,11 @@ export default function Material(props) {
                         <div className="col-2">
                             <select name="color" defaultValue="color" onChange={handleChange} autosize={true} className="form-control">
                                 <option value="color" disabled>Cor</option>
-                                {
+                                {/* {
                                     colors.map(color => (
                                         <option value={color.id} key={color.id} className="text">{color.name}</option>
 
-                                    ))}
+                                    ))} */}
                             </select>
                         </div>
                         <div className="col-1">
@@ -158,7 +159,7 @@ export default function Material(props) {
                                 <DatePicker
                                     name="data"
                                     showPopperArrow={true}
-                                    selected={startDate}
+                                    selected={material.deadline}
                                     onChange={date => handleData(date)}
                                     dateFormat="dd/MM/yyyy"
                                     className="form-control"
