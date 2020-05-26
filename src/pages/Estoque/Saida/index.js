@@ -4,14 +4,12 @@ import DatePicker from "react-datepicker";
 import moment from 'moment'
 // import Select from 'react-select';
 
-import Header from '../../components/Header'
-
 import "react-datepicker/dist/react-datepicker.css";
 
-import api from '../../services/api'
+import api from '../../../services/api'
 
 import './styles.css';
-import stock from '../../assets/stock.svg'
+
 
 export default function Saida() {
 
@@ -77,12 +75,12 @@ export default function Saida() {
 
     return (
         <>
-            <Header />
+            
             <div className="container-saida">
                 <div className="content">
                     <header>
                         <p>Saída de Mercadoria</p>
-                        <img src={stock} width={125} alt="" />
+                       
                     </header>
                     <form onSubmit={handleSubmit}>
                         {/* <Select

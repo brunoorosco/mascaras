@@ -27,10 +27,12 @@ export default function Material(props) {
         price: "",
         largura: "",
         deadline: "",
-
+        deadlineDescription: "",
+        volume:""
+       
     })
 
-  
+
     async function handleSubmit(e) {
 
         e.preventDefault();
@@ -38,14 +40,14 @@ export default function Material(props) {
         console.log(data);
 
         try {
-            await api.post('saida', data, {
+            await api.post('material', data, {
                 headers: {
                     //       Authorization: ongId,
                 }
             }
 
             )
-            history.push('/dashboard')
+            history.push('/estoque')
         } catch (error) {
             alert(`Erro ao cadastrar ${error}`)
 
@@ -76,16 +78,12 @@ export default function Material(props) {
 
     return (
         <>
-            <div className="container">
+             <div className="container">
+                <h3>Cadastro de Material</h3>
 
-                <header>
-                    <h4>Cadastro de Produto</h4>
-                  
-                </header>
+                <form onSubmit={handleSubmit} autoComplete="off">
 
-                <form onSubmit={handleSubmit}>
-
-                    <div class="row form-group">
+                    <div className="row form-group">
                         <div className="col-2">
                             <input className="form-control"
                                 type="text"
@@ -106,13 +104,14 @@ export default function Material(props) {
                             <div className="input-group">
                                 <input className="form-control"
                                     placeholder="Peso ou metros"
-                                    name="tecido"
-                                    value={material.uniMed}
+                                    name="volume"
+                                    value={material.volume}
                                     onChange={handleChange} />
                                 <div className="input-group-append select">
-                                    <select name="tecido" defaultValue="malha" onChange={handleChange} autosize={true} className="btn btn-outline-secondary form-control">
-                                        <option value="malha" >Kg</option>
-                                        <option value="plano" >metro(s)</option>
+                                    <select name="uniMed" defaultValue="kg" onChange={handleChange}  className="btn btn-outline-secondary form-control">
+                                        <option value="kg" >Kg</option>
+                                        <option value="m" >metro(s)</option>
+                                        <option value="pc" >pç(s)</option>
                                     </select>
                                 </div>
                             </div>
@@ -130,9 +129,9 @@ export default function Material(props) {
                             </div>
                         </div>
                     </div>
-                    <div class="row form-group">
+                    <div className="row form-group">
                         <div className="col-2">
-                            <select name="color" defaultValue="color" onChange={handleChange} autosize={true} className="form-control">
+                            <select name="color" defaultValue="color" onChange={handleChange}  className="form-control">
                                 <option value="color" disabled>Cor</option>
                                 {/* {
                                     colors.map(color => (
@@ -159,7 +158,8 @@ export default function Material(props) {
                                 <DatePicker
                                     name="data"
                                     showPopperArrow={true}
-                                    selected={material.deadline}
+                                    //selected={material.deadline}
+                                    value={material.deadline}
                                     onChange={date => handleData(date)}
                                     dateFormat="dd/MM/yyyy"
                                     className="form-control"
@@ -169,17 +169,17 @@ export default function Material(props) {
                             </div>
                         </div>
                     </div>
-                    <div class="row form-group">
+                    <div className="row form-group">
                         <div className="col">
                             <input className="form-control"
                                 type="text"
                                 placeholder="Observação do Produto"
-                                name="observa"
-                                value={material.obser}
+                                name="deadlineDescription"
+                                value={material.deadlineDescription}
                                 onChange={handleChange} />
                         </div>
                     </div>
-                                    <button className="button" type="submit">{props.botao}</button>
+                    <button className="button" type="submit">{props.botao}</button>
                 </form>
             </div>
 

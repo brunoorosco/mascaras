@@ -7,7 +7,7 @@ export default function Alert(props) {
 
     const [color, setColor] = useState([])
     const [xhidden, setHidden] = useState(["none"])
-
+    
    
 
     useEffect(() => {

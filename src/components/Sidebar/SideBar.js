@@ -62,6 +62,11 @@ const SideBar = ({ isOpen, toggle }) => (
 const submenus = [
   [
     {
+      title: "Entrada - Estoque ",
+      target: "/estoque/entrada",
+    },
+   
+    {
       title: "Fornecedor",
       target: "/fornecedor/new",
     },
@@ -72,6 +77,10 @@ const submenus = [
     {
       title: "Produto",
       target: "/product",
+    },
+    {
+      title: "Saída - Estoque ",
+      target: "/estoque/saida",
     },
     {
       title: "Usuário",

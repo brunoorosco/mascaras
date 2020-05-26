@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Form } from "@unform/web";
@@ -7,14 +8,9 @@ import moment from 'moment'
 import api from './../../../services/api'
 import Input from './../../../components/Form/Input'
 
+export default function StockIn() {
 
-
-export default function Produto(props) {
-
-
-    const id = props.match.params.id;
-    console.log(id)
-
+    const [teste, setTeste] = useState([])
     const history = useHistory();
     const [description, setDescription] = useState([])
     const [material, setMaterial] = useState({
@@ -32,7 +28,7 @@ export default function Produto(props) {
 
     useEffect(() => {
 
-        api.get('material/' + id).then(response => {
+        api.get('material/').then(response => {
 
             setMaterial(response.data[0])
 

@@ -10,22 +10,22 @@ module.exports = {
     },
 
     async create(req, res) {
-
-        const { description, deadline, largura, observa, rendimento } = req.body;
+        console.log(req.body)
+        const { description, deadline, largura, deadlineDescription, rendimento, uniMed } = req.body;
         const [id] = await connection('material').insert({
-            description, deadline, largura, observa, rendimento
+            description, deadline, largura, deadlineDescription , rendimento, uniMed
         })
         return res.json({ "message": "material Cadastrado!" })
     },
     async edit(req, res) {
 
-        const { id, description, deadline, largura, deadlineDescription, rendimento } = req.body;
+        const { id, description, deadline, largura, deadlineDescription, rendimento, uniMed } = req.body;
 
 
         await connection('material')
             .where({ id: id })
-            .update({ description, deadline, largura, rendimento, deadlineDescription },
-                ['id', 'description', 'deadline', 'largura', 'rendimento', 'deadlineDescription'])
+            .update({ description, deadline, largura, rendimento, deadlineDescription, uniMed },
+                ['id', 'description', 'deadline', 'largura', 'rendimento', 'deadlineDescription', 'uniMed'])
 
         return res.json({ "message": "material Cadastrado!" })
     },
