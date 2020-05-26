@@ -6,13 +6,15 @@ const matRouter = (app) => {
 
     app.route('/material/:id?')
       //  .get(materialController.index)
-        .post(materialController.create)
+        
+      .post(materialController.create)
+      .put(materialController.edit)
+        
 
 
+    .delete(materialController.delete)
 
-        .delete(materialController.delete)
-
-    app.get('/material/:id', async (req, res) => {
+    app.get('/material/:id?', async (req, res) => {
         const { id } = req.params;
         console.log(id)
         const material = await connection('material').where('id', id);

@@ -55,9 +55,9 @@ export default function MaterialList(){
                             material.map((material, index) => (
                                 <tr key={material.id}>
                                     <td>{material.id}</td>
-                                    <td>{material.name}</td>
-                                    <td>{material.email}</td>
-                                    <td>{material.telefone}</td>
+                                    <td>{material.description}</td>
+                                    <td>{material.deadline}</td>
+                                    <td>{material.largura}</td>
                                     <td>{material.cpf}</td>
                                     <td>
                                         <Link

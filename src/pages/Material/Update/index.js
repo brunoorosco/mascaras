@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {useHistory} from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { Form } from "@unform/web";
 import { Scope } from "@unform/core";
 import DatePicker from "react-datepicker";
@@ -63,15 +63,16 @@ export default function Produto(props) {
 
     async function handleSubmit(data) {
 
-        console.log(data)
-        
+       
+        console.log(data) 
+
         try {
-            await api.put('material', data, {
+            await api.put('material', data , {
                 headers: {
                     //       Authorization: ongId,
                 }
             })
-            history.push('/material')
+            history.push('/estoque')
         } catch (error) {
             alert(`Erro ao atualizar ${error}`)
         }
@@ -80,9 +81,13 @@ export default function Produto(props) {
         <>
             <h3>Teste formulario</h3>
             <Form initialData={material} onSubmit={handleSubmit}>
-                <div class="row form-group">
+                <div className="row form-group">
                     <div className="col-2">
-                        <span className="text-center input-group-text">{material.id}</span>
+                        <Input className="form-control text-center"
+                            name="id"
+                            disabled
+                        //value={material.description}
+                        />
                     </div>
                     <div className="col">
                         <Input className="form-control"
@@ -100,7 +105,7 @@ export default function Produto(props) {
                                 // value={material.uniMed}
                                 onChange={handleChange} />
                             <div className="input-group-append select">
-                                <select name="tecido" defaultValue="malha" onChange={handleChange} autosize={true} className="btn btn-outline-secondary form-control">
+                                <select name="tecido" defaultValue="malha" onChange={handleChange}  className="btn btn-outline-secondary form-control">
                                     <option value="malha" >Kg</option>
                                     <option value="plano" >metro(s)</option>
                                     <option value="plano" >pç</option>
@@ -121,9 +126,9 @@ export default function Produto(props) {
                         </div>
                     </div>
                 </div>
-                <div class="row form-group">
+                <div className="row form-group">
                     <div className="col-2">
-                        <select name="color" defaultValue="color" onChange={handleChange} autosize={true} className="form-control">
+                        <select name="color" defaultValue="color" onChange={handleChange} className="form-control">
                             {/* <option value="color" disabled>Cor</option>
                                 {
                                     colors.map(color => (
@@ -148,24 +153,24 @@ export default function Produto(props) {
                             </div>
 
                             <DatePicker
-                                    name="data"
-                                    showPopperArrow={true}
-                                    // selected={material.deadline}
-                                     onChange={date => handleData(date)}
-                                     dateFormat="dd/MM/yyyy"
-                                     value={material.deadline}
-                                     className="form-control"
-                                    // placeholder="Prazo de Entrega"
-                                />
+                                name="data"
+                                showPopperArrow={true}
+                                // selected={material.deadline}
+                                onChange={date => handleData(date)}
+                                dateFormat="dd/MM/yyyy"
+                                value={material.deadline}
+                                className="form-control"
+                            // placeholder="Prazo de Entrega"
+                            />
 
                         </div>
                     </div>
                 </div>
-                <div class="row form-group">
+                <div className="row form-group">
                     <div className="col">
                         <Input className="form-control"
                             placeholder="Observação do Produto"
-                            name="observa"
+                            name="deadlineDescription"
                             //  value={material.obser}
                             onChange={handleChange} />
                     </div>
