@@ -20,6 +20,7 @@
     "moment": "^2.24.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
+    "react-bootstrap-table": "^4.3.1",
     "react-datepicker": "^2.14.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
