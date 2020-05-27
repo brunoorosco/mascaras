@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useState, useEffect } from 'react'
-import { FiTrash, FiEdit } from 'react-icons/fi'
+import { FiTrash, FiEdit, FiPlus } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 import api from '../../services/api'
 import './styles.css'
@@ -44,12 +44,12 @@ export default function MaterialList() {
                         <th>Rendimento</th>
                         <th>Cor</th>
                         <th>Fornecedor</th>
-                        <th>
+                        <th className="text-center">
                             <Link
-                                className='btn btn-primary'
-                                to='/material'
+                                className=''
+                                to='/material/new'
                             >
-                                Adicionar Material
+                                <FiPlus size={20} /> Material
                                 </Link>
                         </th>
                     </tr>
@@ -65,7 +65,7 @@ export default function MaterialList() {
                                 <td>{material.rendimento}</td>
                                 <td>{material.cor}</td>
                                 <td>{material.fornecedor}</td>
-                                <td>
+                                <td className="text-center">
                                     <Link
                                         className='icon'
                                         to={`/material/${material.id}`}

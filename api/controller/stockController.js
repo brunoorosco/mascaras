@@ -3,13 +3,12 @@ const connection = require('../../database/connection')
 module.exports = {
 
     async index(req, res) {
-        const entrada = await connection('entrada').sum('quantidade as q')
-        
-       // const saida = await connection('saida').select('*');
+    //    const entrada = await connection('stock').sum('quantidade as q')   
+        const material = await connection('saida').select('*');
      //  const obj = JSON.parse(entrada);
-        console.log(entrada)
+        console.log(material)
 
-        return res.json(entrada);
+        return res.json(material);
     },
 
 }

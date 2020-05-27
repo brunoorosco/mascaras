@@ -14,16 +14,13 @@ export default function StockIn() {
     const history = useHistory();
     const [description, setDescription] = useState([])
     const [material, setMaterial] = useState({
-        id: "",
-        description: "",
-        uniMed: "",
-        quantidade: "",
-        code: "",
-        rendimento: "",
-        price: "",
-        largura: "",
-        deadline: "",
-
+        notaFiscal: "",
+        dataEntrada: new Date(),
+        idFornecedor: "",
+        quantity: "",
+        idMaterial: "",
+        unitPrice: "",
+        totalPrice: "",
     })
 
     useEffect(() => {
@@ -76,70 +73,50 @@ export default function StockIn() {
     return (
         <>
             <div className="container">
-                <h3>Edição de Material</h3>
+                <h3>Entrada de Material</h3>
                 <Form initialData={material} onSubmit={handleSubmit} autocomplete="off">
                     <div className="row form-group">
                         <div className="col-2">
                             <Input className="form-control text-center"
                                 name="id"
-                                disabled
-                            //value={material.description}
+                                placeholder="Nota Fiscal Nº"
+                                value={material.notaFiscal}
                             />
                         </div>
                         <div className="col">
                             <Input className="form-control"
-                                placeholder="Descrição"
-                                maxLength="100"
+                                placeholder="Material"
                                 name="description"
-                                //value={material.description}
+                                value={material.idMaterial}
                                 onChange={handleChange} />
                         </div>
                         <div className="col-3">
-                            <div className="input-group">
-                                <Input className="form-control"
-                                    placeholder="Peso/metros/Pç"
-                                    name="deadline"
-                                    // value={material.uniMed}
-                                    onChange={handleChange} />
-                                <div className="input-group-append select">
-                                    <select name="tecido" defaultValue="malha" onChange={handleChange} className="btn btn-outline-secondary form-control">
-                                        <option value="malha" >Kg</option>
-                                        <option value="plano" >metro(s)</option>
-                                        <option value="plano" >pç</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-2">
-                            <div className="input-group">
-                                <Input className="form-control"
-                                    placeholder="Largura"
-                                    name="largura"
-                                    //  value={material.largura}
-                                    onChange={handleChange} />
-                                <div className="input-group-append select">
-                                    <span className="input-group-text">metro(s)</span>
-                                </div>
-                            </div>
+                            <Input className="form-control"
+                                placeholder="Quantidade"
+                                name="deadline"
+                                value={material.quantity}
+                                onChange={handleChange} />
                         </div>
                     </div>
                     <div className="row form-group">
                         <div className="col-2">
-                            <select name="color" defaultValue="color" onChange={handleChange} className="form-control">
-                                {/* <option value="color" disabled>Cor</option>
-                                {
-                                    colors.map(color => (
-                                        <option value={color.id} key={color.id} className="text">{color.name}</option>
-
-                                    ))} */}
-                            </select>
+                            <div className="input-group">
+                                <Input className="form-control"
+                                    placeholder="Largura"
+                                    name="unitPrice"
+                                    value={material.unitPrice}
+                                    onChange={handleChange} />
+                                        </div>
                         </div>
-                        <div className="col-1">
+                    </div>
+                    <div className="row form-group">
+                       
+                        <div className="col-2">
                             <Input
                                 className="form-control"
-                                placeholder="Rend."
-                                name="rendimento"
-                                //value={material.rendimento}
+                                placeholder="Valor Total"
+                                name="totalPrice"
+                                value={material.totalPrice}
                                 onChange={handleChange} />
                         </div>
 
@@ -150,12 +127,12 @@ export default function StockIn() {
                                 </div>
 
                                 <DatePicker
-                                    name="data"
+                                    name="dataEntrada"
                                     showPopperArrow={true}
-                                    // selected={material.deadline}
+                                   // selected={material.dataEntrada}
                                     onChange={date => handleData(date)}
                                     dateFormat="dd/MM/yyyy"
-                                    value={material.deadline}
+                                   value={material.dataEntrada}
                                     className="form-control"
                                 // placeholder="Prazo de Entrega"
                                 />
@@ -167,8 +144,8 @@ export default function StockIn() {
                         <div className="col">
                             <Input className="form-control"
                                 placeholder="Observação do Produto"
-                                name="deadlineDescription"
-                                //  value={material.obser}
+                                name="dataEntrada"
+                                value={material.dataEntrada}
                                 onChange={handleChange} />
                         </div>
                     </div>

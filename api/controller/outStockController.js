@@ -3,27 +3,28 @@ const connection = require('../../database/connection')
 module.exports = {
 
     async index(req, res) {
-        const saida = await connection('saida').sum('quantidade as q');
+        const saida = await connection('saidaEstoque');
         return res.json(saida);
     },
 
     async create(req, res) {
 
-       
-       const { school_id, quantidade, data } = req.body;
-       
-       await connection('saida').insert({
-            school_id,
-            quantidade,
-            data
+        const { notaFiscal, dataSaida, material_id, quantity, unitPrice, totalPrice } = req.body;
+
+        await connection('saidaEstoque').insert({
+            notaFiscal,
+            dataSaida,
+            material_id,
+            quantity,
+            unitPrice,
+            totalPrice
         })
-       return res.json({ "message": "Saída Realizada!" })
+        return res.json({ "message": "Saída Realizada!" })
     },
     async delete(req, res) {
         const { id } = req.params;
         // const ong_id = req.headers.authorization;
-
-       await connection('saida')
+        await connection('saida')
             .where('id', id)
             // .select('ong_id')
             .first();
