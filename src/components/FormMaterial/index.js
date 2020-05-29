@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory, } from 'react-router-dom'
+import { Form } from "@unform/web";
 import DatePicker from "react-datepicker";
 import moment from 'moment'
+
 // import Select from 'react-select';
 
 import "react-datepicker/dist/react-datepicker.css";
 
 import api from '../../services/api'
 
-//import './styles.css';
+import './styles.css';
 
 export default function Material(props) {
 
@@ -28,14 +30,12 @@ export default function Material(props) {
         largura: "",
         deadline: "",
         deadlineDescription: "",
-        volume:""
-       
+        volume: ""
     })
 
 
-    async function handleSubmit(e) {
-
-        e.preventDefault();
+    async function handleSubmit() {
+     
         const data = material
         console.log(data);
 
@@ -44,15 +44,11 @@ export default function Material(props) {
                 headers: {
                     //       Authorization: ongId,
                 }
-            }
-
-            )
+            })
             history.push('/estoque')
         } catch (error) {
             alert(`Erro ao cadastrar ${error}`)
-
         }
-
     }
     function handleChange(evt) {
         evt.preventDefault();
@@ -78,10 +74,10 @@ export default function Material(props) {
 
     return (
         <>
-             <div className="container">
+            <div className="container">
                 <h3>Cadastro de Material</h3>
 
-                <form onSubmit={handleSubmit} autoComplete="off">
+                <Form onSubmit={handleSubmit} autoComplete="off">
 
                     <div className="row form-group">
                         <div className="col-2">
@@ -89,27 +85,31 @@ export default function Material(props) {
                                 type="text"
                                 placeholder="Código do Prod"
                                 name="code"
-                                value={material.code}
-                                onChange={handleChange} />
+                             value={material.code}
+                              onChange={handleChange} 
+                            />
                         </div>
                         <div className="col">
                             <input className="form-control"
                                 placeholder="Descrição"
                                 maxLength="100"
                                 name="description"
-                                value={material.description}
-                                onChange={handleChange} />
+                             value={material.description}
+                              onChange={handleChange} 
+                            />
                         </div>
                         <div className="col-3">
                             <div className="input-group">
-                                <input className="form-control"
+                                <input
+                                    className="form-control"
                                     placeholder="Peso ou metros"
                                     name="volume"
-                                    value={material.volume}
-                                    onChange={handleChange} />
-                                <div className="input-group-append select">
-                                    <select name="uniMed" defaultValue="kg" onChange={handleChange}  className="btn btn-outline-secondary form-control">
-                                        <option value="kg" >Kg</option>
+                                value={material.volume}
+                                onChange={handleChange} 
+                                />
+                                <div className="input-group-append ">
+                                    <select name="uniMed" onChange={handleChange} className="btn btn-outline-secondary form-control">
+                                        <option defaultValue="kg" >Kg</option>
                                         <option value="m" >metro(s)</option>
                                         <option value="pc" >pç(s)</option>
                                     </select>
@@ -121,8 +121,9 @@ export default function Material(props) {
                                 <input className="form-control"
                                     placeholder="Largura"
                                     name="largura"
-                                    value={material.largura}
-                                    onChange={handleChange} />
+                                     value={material.largura}
+                                    onChange={handleChange} 
+                                />
                                 <div className="input-group-append select">
                                     <span className="input-group-text">metro(s)</span>
                                 </div>
@@ -131,7 +132,7 @@ export default function Material(props) {
                     </div>
                     <div className="row form-group">
                         <div className="col-2">
-                            <select name="color" defaultValue="color" onChange={handleChange}  className="form-control">
+                            <select name="color" defaultValue="color" onChange={handleChange} className="form-control">
                                 <option value="color" disabled>Cor</option>
                                 {/* {
                                     colors.map(color => (
@@ -145,8 +146,9 @@ export default function Material(props) {
                                 className="form-control"
                                 placeholder="Rend."
                                 name="rendimento"
-                                value={material.rendimento}
-                                onChange={handleChange} />
+                            value={material.rendimento}
+                            onChange={handleChange} 
+                            />
                         </div>
 
                         <div className="col">
@@ -156,7 +158,7 @@ export default function Material(props) {
                                 </div>
 
                                 <DatePicker
-                                    name="data"
+                                    name="deadline"
                                     showPopperArrow={true}
                                     //selected={material.deadline}
                                     value={material.deadline}
@@ -175,12 +177,13 @@ export default function Material(props) {
                                 type="text"
                                 placeholder="Observação do Produto"
                                 name="deadlineDescription"
-                                value={material.deadlineDescription}
-                                onChange={handleChange} />
+                               value={material.deadlineDescription}
+                               onChange={handleChange} 
+                               />
                         </div>
                     </div>
                     <button className="button" type="submit">{props.botao}</button>
-                </form>
+                </Form>
             </div>
 
         </>

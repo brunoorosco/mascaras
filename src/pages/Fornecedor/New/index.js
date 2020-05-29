@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { Link, useHistory, } from 'react-router-dom'
 import { FiSearch } from 'react-icons/fi'
-import Header from '../../../components/Header'
 import Alert from '../../../components/Alert'
 
 import api from '../../../services/api';

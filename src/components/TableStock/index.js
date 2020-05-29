@@ -13,9 +13,9 @@ export default function MaterialList() {
     useEffect(() => {
         api.get('material').then(response => {
             setMaterial(response.data)
-            console.log(response.data[0].cnpj)
+         //  console.log(response.data[0].cnpj)
         })
-    }, [])
+    }, [setMaterial])
 
 
     async function handleDeleteMaterial(id) {
@@ -39,9 +39,9 @@ export default function MaterialList() {
                     <tr>
                         <th>Código</th>
                         <th>Descrição</th>
-                        <th>Stock</th>
-                        <th>Largura</th>
-                        <th>Rendimento</th>
+                        <th>Stock Mínimo</th>
+                        <th>Stock Máximo</th>
+                        <th>Total</th>
                         <th>Cor</th>
                         <th>Fornecedor</th>
                         <th className="text-center">
@@ -58,11 +58,11 @@ export default function MaterialList() {
                     {
                         material.map((material, index) => (
                             <tr key={material.id}>
-                                <td>{material.id}</td>
+                                <td>{material.code}</td>
                                 <td>{material.description}</td>
-                                <td>{material.stock}</td>
-                                <td>{material.largura}</td>
-                                <td>{material.rendimento}</td>
+                                <td>{material.min}</td>
+                                <td>{material.max}</td>
+                                <td>{material.total}</td>
                                 <td>{material.cor}</td>
                                 <td>{material.fornecedor}</td>
                                 <td className="text-center">
@@ -73,7 +73,7 @@ export default function MaterialList() {
                                         <FiEdit size={15} color={'#0202B2'} />
                                     </Link>
                                     <Link
-                                        className="icon"
+                                        className="icon" to='#'
                                         onClick={() => handleDeleteMaterial(material.id)}
                                     >
                                         <FiTrash size={15} color={'#b20202'} />

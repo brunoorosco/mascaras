@@ -1,0 +1,23 @@
+.container form input {
+    margin-top: 10px;
+}
+
+.container form select {
+    margin-top: 10px;
+    overflow-y:auto;
+}
+.container form span {
+    margin-top: 10px;
+}
+.container form .select {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.container header{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 28px;
+}

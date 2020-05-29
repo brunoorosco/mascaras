@@ -7,13 +7,11 @@ import moment from 'moment'
 import api from './../../../services/api'
 import Input from './../../../components/Form/Input'
 
-
-
 export default function Produto(props) {
 
 
     const id = props.match.params.id;
-    console.log(id)
+//    console.log(id)
 
     const history = useHistory();
     const [description, setDescription] = useState([])
@@ -24,21 +22,16 @@ export default function Produto(props) {
         quantidade: "",
         code: "",
         rendimento: "",
-        price: "",
         largura: "",
         deadline: "",
 
     })
 
     useEffect(() => {
-
         api.get('material/' + id).then(response => {
-
             setMaterial(response.data[0])
-
-
         })
-    }, [setMaterial])
+    }, [material.id])
 
     function handleChange(evt) {
         evt.preventDefault();
@@ -81,11 +74,11 @@ export default function Produto(props) {
         <>
             <div className="container">
                 <h3>Edição de Material</h3>
-                <Form initialData={material} onSubmit={handleSubmit} autocomplete="off">
+                <Form initialData={material} onSubmit={handleSubmit} autoComplete="off">
                     <div className="row form-group">
                         <div className="col-2">
                             <Input className="form-control text-center"
-                                name="id"
+                                name="code"
                                 disabled
                             //value={material.description}
                             />
@@ -106,10 +99,10 @@ export default function Produto(props) {
                                     // value={material.uniMed}
                                     onChange={handleChange} />
                                 <div className="input-group-append select">
-                                    <select name="tecido" defaultValue="malha" onChange={handleChange} className="btn btn-outline-secondary form-control">
+                                    <select name="uniMed" value={material.uniMed} onChange={handleChange} className="btn btn-outline-secondary form-control">
                                         <option value="malha" >Kg</option>
                                         <option value="plano" >metro(s)</option>
-                                        <option value="plano" >pç</option>
+                                        <option value="pc" >pç</option>
                                     </select>
                                 </div>
                             </div>
@@ -176,7 +169,7 @@ export default function Produto(props) {
                                 onChange={handleChange} />
                         </div>
                     </div>
-                    <button className="btn btn-primary">Atualizar</button>
+                    <button className="btn btn-primary btn-block">Atualizar</button>
                 </Form>
             </div>
         </>
