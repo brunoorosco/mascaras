@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './styles.css';
-import ListItem from './components/ListItem'
-import NewTaskInput from './components/NewTaskInput'
+import ListItem from './ListItem'
+import NewTaskInput from './NewTaskInput'
 
 const ListaEntrada = () => {
   const [tasks, setTasks] = useState([]);
@@ -44,7 +44,7 @@ const ListaEntrada = () => {
   }
 
   return (
-    <div className="App">
+    <div className="container">
       <div className="App-header">
         <NewTaskInput onSubmit={addNewTask} />
         <form onSubmit={enviar}>
@@ -58,7 +58,7 @@ const ListaEntrada = () => {
             />
           ))}
 
-          <button type='submit'>EnviAR</button>
+          <button className="btn btn-primary btn-block" type='submit'>Enviar</button>
         </form>
       </div>
       <div className="Array-preview">

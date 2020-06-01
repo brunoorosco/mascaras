@@ -4,7 +4,6 @@ import DatePicker from "react-datepicker";
 import moment from 'moment'
 // import Select from 'react-select';
 
-import Header from '../../../components/Header'
 
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -65,7 +64,7 @@ export default function Saida() {
 
     return (
         <>
-            <Header />
+           
             <div className="container-saida">
                 <div className="content">
                     <header>

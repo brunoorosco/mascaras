@@ -32,26 +32,32 @@ const SideBar = ({ isOpen, toggle }) => (
 
         <NavItem>
           <NavLink tag={Link} to={"/about"}>
-            <FaHome  className="mr-2" />
+            <FaHome className="mr-2" />
             About
           </NavLink>
         </NavItem>
         <NavItem>
           <NavLink tag={Link} to={"/pages"}>
-            <FaHome  className="mr-2" />
+            <FaHome className="mr-2" />
             Portfolio
           </NavLink>
         </NavItem>
         <NavItem>
           <NavLink tag={Link} to={"/faq"}>
-            <FaHome  className="mr-2" />
+            <FaHome className="mr-2" />
             FAQ
           </NavLink>
         </NavItem>
         <NavItem>
           <NavLink tag={Link} to={"/contact"}>
-            <FaHome  className="mr-2" />
+            <FaHome className="mr-2" />
             Contact
+          </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink tag={Link} to={"/teste"}>
+            <FaHome className="mr-2" />
+            teste
           </NavLink>
         </NavItem>
       </Nav>
@@ -65,7 +71,7 @@ const submenus = [
       title: "Entrada - Estoque ",
       target: "/estoque/entrada",
     },
-   
+
     {
       title: "Fornecedor",
       target: "/fornecedor/new",

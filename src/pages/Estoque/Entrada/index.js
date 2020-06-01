@@ -4,9 +4,10 @@ import { useHistory } from 'react-router-dom'
 import { Form } from "@unform/web";
 import { Scope } from "@unform/core";
 import DatePicker from "react-datepicker";
-import moment from 'moment' 
+import moment from 'moment'
 import api from './../../../services/api'
 import Input from './../../../components/Form/Input'
+import AutoFornecedor from '../../../components/AutoComplete/Fornecedor'
 
 export default function StockIn() {
 
@@ -23,7 +24,7 @@ export default function StockIn() {
         totalPrice: "",
     })
 
-     function handleChange(evt) {
+    function handleChange(evt) {
         evt.preventDefault();
 
         const value = evt.target.value;
@@ -63,6 +64,7 @@ export default function StockIn() {
     return (
         <>
             <div className="container">
+
                 <h3>Entrada de Material</h3>
                 <Form initialData={material} onSubmit={handleSubmit} autoComplete="off">
                     <div className="row form-group">
@@ -70,24 +72,24 @@ export default function StockIn() {
                             <Input className="form-control text-center"
                                 name="notaFiscal"
                                 placeholder="Nota Fiscal Nº"
-                               // value={material.notaFiscal}
+                            // value={material.notaFiscal}
                             />
                         </div>
                         <div className="col">
                             <Input className="form-control"
                                 placeholder="Material"
                                 name="description"
-                                // value={material.idMaterial}
-                               // onChange={handleChange} 
-                               />
+                            // value={material.idMaterial}
+                            // onChange={handleChange} 
+                            />
                         </div>
                         <div className="col-3">
                             <Input className="form-control"
                                 placeholder="Quantidade"
                                 name="deadline"
-                                // value={material.quantity}
-                               // onChange={handleChange} 
-                                />
+                            // value={material.quantity}
+                            // onChange={handleChange} 
+                            />
                         </div>
                     </div>
                     <div className="row form-group">
@@ -96,22 +98,22 @@ export default function StockIn() {
                                 <Input className="form-control"
                                     placeholder="Largura"
                                     name="unitPrice"
-                                    // value={material.unitPrice}
-                                    // onChange={handleChange}
-                                     />
-                                        </div>
+                                // value={material.unitPrice}
+                                // onChange={handleChange}
+                                />
+                            </div>
                         </div>
                     </div>
                     <div className="row form-group">
-                       
+
                         <div className="col-2">
                             <Input
                                 className="form-control"
                                 placeholder="Valor Total"
                                 name="totalPrice"
-                                // value={material.totalPrice}
-                                // onChange={handleChange} 
-                                />
+                            // value={material.totalPrice}
+                            // onChange={handleChange} 
+                            />
                         </div>
 
                         <div className="col">
@@ -123,29 +125,38 @@ export default function StockIn() {
                                 <DatePicker
                                     name="dataEntrada"
                                     showPopperArrow={true}
-                                   // selected={material.dataEntrada}
+                                    // selected={material.dataEntrada}
                                     onChange={date => handleData(date)}
                                     dateFormat="dd/MM/yyyy"
-                                   value={material.dataEntrada}
+                                    value={material.dataEntrada}
                                     className="form-control"
                                 // placeholder="Prazo de Entrega"
                                 />
 
                             </div>
                         </div>
+                        <div className="col">
+                            <AutoFornecedor name={'forn'} />
+                        </div>
                     </div>
+
+
+
                     <div className="row form-group">
                         <div className="col">
                             <Input className="form-control"
                                 placeholder="Observação do Produto"
                                 name="data"
-                                // value={material.dataEntrada}
-                                // onChange={handleChange} 
-                                />
+                            // value={material.dataEntrada}
+                            // onChange={handleChange} 
+                            />
                         </div>
                     </div>
+
                     <button className="btn btn-danger btn-block">Registrar Entrada</button>
                 </Form>
+
+
             </div>
         </>
     )
