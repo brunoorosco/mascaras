@@ -1,75 +1,94 @@
-import { useField } from '@unform/core';
-import Search from 'react-search'
-import ReactDOM from 'react-dom'
-import React, {
-    Component,
-    PropTypes,
-    useEffect,
-    useState,
-    useRef
-} from 'react'
+import api from '../../../services/api'
+//import React, { useEffect, useState, useRef } from "react";
 
+// export default function Auto() {
+//     const [display, setDisplay] = useState(false);
+//     const [options, setOptions] = useState([]);
+//     const [search, setSearch] = useState("");
+//     const wrapperRef = useRef(null);
+//     const [state, setState] = useState({
+//         fornecedor: "",
+//         fornecedor_id: ""
+//     })
+//     useEffect(() => {
+//         api.get('fornecedor').then(response => {
+//             setOptions(response.data);
+//         })
+//     }, [setOptions])
 
-// export default function AutoFornecedor({ name, ...rest }) {
+//     useEffect(() => {
+//         window.addEventListener("mousedown", handleClickOutside);
+//         return () => {
+//             window.removeEventListener("mousedown", handleClickOutside);
+//         };
+//     });
 
-//     const [fornecedor, setFofrnecedor] = useState([]);
+//     const handleClickOutside = event => {
+//         const { current: wrap } = wrapperRef;
+//         if (wrap && !wrap.contains(event.target)) {
+//             setDisplay(false);
+//         }
+//     };
 
-//     function getItemsAsync(searchValue, cb) {
-//         let url = `https://api.github.com/search/repositories?q=${searchValue}&language=javascript`
-//         fetch(url).then((response) => {
-//             return response.json();
-//         }).then((results) => {
-//             if (results.items != undefined) {
-//                 let items = results.items.map((res, i) => { return { id: i, value: res.full_name } })
-//                 this.setState({ repos: items })
-//                 cb(searchValue)
-//             }
+//     function handleChange(evt) {
+//         evt.preventDefault();
+
+//         const value = evt.target.value;
+//         setState({
+//             ...state,
+//             [evt.target.name]: value
 //         });
+//         console.log(value)
 //     }
 
 //     return (
-//         <>
-//             <input name={name}  {...rest} className="form-control" />
-//             <Search items={this.state.repos}
-//                 multiple={true}
-//                 getItemsAsync={this.getItemsAsync.bind(this)}
-//                 onItemsChanged={this.HiItems.bind(this)} />
-//         </>
-//     )
+//         <div ref={wrapperRef} className="col ">
+//             <select className="form-control" defaultValue="fornecedor" name="fornecedor" onChange={handleChange} autosize={true}>
+//                 <option value="fornecedor" disabled>Fornecedor</option>
+//                 {
+//                     options.map(fornecedor => (
+//                         <option value={fornecedor.id} key={fornecedor.id} className="text">{fornecedor.name}</option>
+
+//                     ))}
+//             </select>
+
+//         </div>
+//     );
+
 // }
+// /src/components/form/fields/Select.js
+import React, { useEffect, useState } from 'react'
 
 
-class AutoFornecedor extends Component {
+export default function Select({ name, value }) {
 
-    constructor(props) {
-        super(props)
-        this.state = { repos: [] }
+    const [options, setOptions] = useState([]);
+    const [item, setItem] = useState([]);
+
+    useEffect(() => {
+        api.get('fornecedor').then(response => {
+            setOptions(response.data);
+
+        })
+    }, [setOptions])
+
+    function handleChange(evt) {
+        evt.preventDefault();
+
+        const value = evt.target.value;
+        setItem(value)
     }
 
-    getItemsAsync(searchValue, cb) {
-        let url = `http://localhost:3333/fornecedor`
-        fetch(url).then((response) => {
-            return response.json();
-        }).then((results) => {
-            if (results.items != undefined) {
-                let items = results.items.map((res, i) => { return { id: i, value: res.full_name } })
-                this.setState({ repos: items })
-                cb(searchValue)
-            }
-        });
-    }
-
-    render() {
-        return (
-            <div>
-                <Search items={this.state.repos}
-                    multiple={true}
-                    getItemsAsync={this.getItemsAsync.bind(this)}
-                // onItemsChanged={this.HiItems.bind(this)} 
-                />
-            </div>
-        )
-    }
+    return (
+        <>
+            <select name={name} defaultValue='fornecedor' className="form-control" onChange={handleChange}>
+                <option defaultValue="0" disabled>Fornecedor</option>
+                {options.map(option => (
+                    <option key={option.id} value={option.id}>
+                        {option.name}
+                    </option>
+                ))}
+            </select>
+        </>
+    )
 }
-
-export default AutoFornecedor;

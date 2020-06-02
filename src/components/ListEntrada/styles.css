@@ -1,0 +1,48 @@
+.list{
+    width: 100%;
+    max-width: 1180px;
+    padding: 0 0px;
+    margin: 15px auto;
+}
+
+.list ul{
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 24px;
+    list-style: none;
+}
+
+.list ul li{
+    background: #fff;
+    padding: 15px 15px 5px 15px;
+    border-radius: 8px;
+    position: relative;
+    margin-bottom: 1px;
+}
+
+.list ul li button{
+    position: absolute;
+    right: 24px;
+    top: 8px;
+    border: 0;
+    background: transparent;
+}
+
+.list ul li button:hover{
+    opacity: 0.8;
+}
+
+.list ul li strong{
+    display: block;
+    margin-bottom: -10px;
+    color: #41414d;
+}
+
+.list ul li p + strong{
+    margin-top: 25px;
+}
+.list ul li p{
+    line-height: 5px;
+    font-size: 16px;
+    color: #737380;
+}

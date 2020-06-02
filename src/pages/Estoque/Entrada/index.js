@@ -8,6 +8,7 @@ import moment from 'moment'
 import api from './../../../services/api'
 import Input from './../../../components/Form/Input'
 import AutoFornecedor from '../../../components/AutoComplete/Fornecedor'
+import './styles.css'
 
 export default function StockIn() {
 

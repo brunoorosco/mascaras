@@ -58,14 +58,14 @@ const ListaEntrada = () => {
             />
           ))}
 
-          <button className="btn btn-primary btn-block" type='submit'>Enviar</button>
+         
         </form>
       </div>
-      <div className="Array-preview">
+      {/* <div className="Array-preview">
         <pre>
           {JSON.stringify(tasks, null, 4)}
         </pre>
-      </div>
+      </div> */}
     </div>
   )
 }

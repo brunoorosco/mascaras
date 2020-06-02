@@ -1,4 +1,6 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
+import { FiPower, FiTrash2 } from 'react-icons/fi'
+import './styles.css';
 
 const ListItem = ({ onChange, onDelete, value }) => {
 
@@ -7,33 +9,44 @@ const ListItem = ({ onChange, onDelete, value }) => {
     dataEntrada: new Date(),
     idFornecedor: "",
     quantity: value.quantity,
+    codeMaterial: value.code,
     material: value.material,
-    unitPrice: "",
-    totalPrice: "",
+    unitPrice: value.unitPrice,
+    totalPrice: value.totalPrice,
   });
 
   //  console.log(value.notaFiscal)
   return (
-    <div className="Item-container">
-      {/* <input
-        type='text'
-        className="Item-field"
-        value={itens.notaFiscal}
-        onChange={onChange}
-        name='notaFiscal'
-      />
-      <input
-        type='text'
-        className="Item-field"
-        value={itens.material}
-        onChange={onChange}
-        name='material'
-      /> */}
-      <span >Nota Fiscal: {itens.notaFiscal}</span>
-      <span ></span>
-      <span >{itens.material}</span>
-      <span >{itens.quantity}</span>
-      <button onClick={onDelete}>Excluir</button>
+    <div className="list">
+      <ul>
+        <li>
+          <div className='row'>
+            <div className="col">
+              <strong>Cód. Produto</strong>
+              <p>{itens.codeMaterial}</p>
+            </div>
+            <div className="col">
+              <strong>Material</strong>
+              <p>{itens.material}</p>
+            </div>
+            <div className="col">
+              <strong>Quantidade</strong>
+              <p>{itens.quantity}</p>
+            </div>
+            <div className="col">
+              <strong>Valor Unitário</strong>
+              <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(itens.unitPrice)}</p>
+            </div>
+            <div className="col">
+              <strong>Total</strong>
+              <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(itens.totalPrice)}</p>
+            </div>
+            <button onClick={onDelete} type="button">
+              <FiTrash2 size={16} color="#a8a8b3" />
+            </button>
+          </div>
+        </li>
+      </ul>
     </div>
   );
 };
