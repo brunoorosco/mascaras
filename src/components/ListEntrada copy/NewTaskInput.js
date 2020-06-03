@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DatePicker from "react-datepicker";
 import moment from 'moment'
-import api from './../../services/api'
+import api from '../../services/api'
 
 const NewTaskInput = ({ onSubmit }) => {
 

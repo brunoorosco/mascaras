@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DatePicker from "react-datepicker";
 import moment from 'moment'
-import api from './../../services/api'
+import api from '../../services/api'
 
 const NewTaskInput = ({ onSubmit }) => {
 
@@ -147,7 +147,7 @@ const NewTaskInput = ({ onSubmit }) => {
       <form onSubmit={submit} autoComplete="off">
         <div className="card">
           <div className="card-body">
-            <h4>Cadastro de Entrada</h4>
+            <h4>Cadastro de Saida</h4>
             <div className="row">
 
               <div className="col-2">
