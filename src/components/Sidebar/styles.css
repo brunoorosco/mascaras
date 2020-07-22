@@ -23,9 +23,52 @@ a:focus {
     transition: 0.5s;
   }
   
+  .sidebar-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    flex-grow: 1;
+    padding: 10px;
+}
   .sidebar-header {
     background: #ad0202;
-  }
+    flex-grow: 1;
+    border-bottom: 1px solid #3a3f48;
+    padding: 10px 4px;
+    overflow: hidden;
+}
+
+.sidebar-h {
+  display:flex;
+}
+.sidebar-h .user-pic img {
+  object-fit: cover;
+  width: 40%;
+  border-radius: 5px;
+}
+
+.sidebar-h .user-info {
+  float: left;
+}
+
+.sidebar-h .user-info > span {
+  display: block;
+}
+
+.sidebar-h .user-info .user-role {
+  font-size: 12px;
+}
+
+.sidebar-h .user-info .user-status {
+  font-size: 11px;
+  margin-top: 4px;
+}
+
+.sidebar-h .user-info .user-status i {
+  font-size: 8px;
+  margin-right: 4px;
+  color: #5cb85c;
+}
+
   
   .sidebar-header h4 {
     color: #fff;
@@ -67,7 +110,7 @@ a:focus {
     display: none;
   }
   .side-menu {
-    height: calc(100vh - 130px);
+    /* height: calc(100vh - 130px); */
     overflow-y: scroll;
   }
   

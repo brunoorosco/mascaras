@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import DatePicker from "react-datepicker";
 import moment from 'moment'
-import api from './../../services/api'
+import api from '../../../services/api'
+import InputMoney from '../../InputMoney'
+import SelectFornecedor from '../../SelectFornecedor'
+import SelectMaterial from '../../SelectMaterial'
 
 const NewTaskInput = ({ onSubmit }) => {
 
+  const [forn, setForn] = useState([]);
+  const [material, setMaterial] = useState({
+    code: "",
+    name: "",
+    price: "",
+  });
+  const [price, setPrice] = useState("");
   const [options, setOptions] = useState([]);
   const [listMaterial, setListMaterial] = useState([]);
   const [disableInput, setDisableInput] = useState(false)
@@ -13,29 +23,22 @@ const NewTaskInput = ({ onSubmit }) => {
   const [newItem, setNewItem] = useState({
     notaFiscal: "",
     dataEntrada: moment(Date()).format("DD-MM-YYYY"),
-    idFornecedor: "",
-    totalPrice: "",
+    fornecedor_id: "",
     quantity: 1,
     code: "",
-    idMaterial: "",
+    material_id: "",
     material: "material",
     unitPrice: "",
     totalPrice: 0,
   });
 
-  const [pedido, setPedido] = useState({
-    notaFiscal: "",
-    dataEntrada: moment(Date()).format("DD-MM-YYYY"),
-    idFornecedor: "",
-    fornecedor: "",
-    totalPrice: "",
-  });
-
-  useEffect(() => {
-    api.get('fornecedor').then(response => {
-      setOptions(response.data);
+   useEffect(() => {
+    setNewItem({
+      ...newItem,
+     fornecedor_id: forn,
     })
-  }, [setOptions])
+  }, [forn])
+
 
   useEffect(() => {
     api.get('material').then(response => {
@@ -45,12 +48,14 @@ const NewTaskInput = ({ onSubmit }) => {
 
 
   useEffect(() => {
-    const valor = (parseFloat(newItem.quantity) * parseFloat(newItem.unitPrice))
+
+    const valor = (parseFloat(newItem.quantity) * parseFloat(price))
 
     if (!isNaN(valor)) {
       setNewItem({
         ...newItem,
         totalPrice: valor,
+        unitPrice: price
       })
     } else {
       setNewItem({
@@ -58,29 +63,10 @@ const NewTaskInput = ({ onSubmit }) => {
         totalPrice: 0,
       })
     }
-  }, [newItem.quantity, newItem.unitPrice])
-
-
-  function filter_array(test_array) {
-    let index = -1;
-    const arr_length = test_array ? test_array.length : 0;
-    let resIndex = -1;
-    const result = [];
-
-    while (++index < arr_length) {
-      const value = test_array[index];
-
-      if (value) {
-        result[++resIndex] = value;
-      }
-    }
-
-    return result;
-  }
-
-
+  }, [newItem.quantity, price])
 
   function setNewTask(evt) {
+
     evt.preventDefault();
     const value = evt.target.value;
     const name = evt.target.name;
@@ -97,13 +83,10 @@ const NewTaskInput = ({ onSubmit }) => {
       ...newItem,
       dataEntrada: moment(data).format("DD-MM-YYYY")
     })
-    console.log(moment(data).format("DD-MM-YYYY"))
-    // setStartDate(evt.target.value)
   }
 
   function handleChange(evt) {
     evt.preventDefault();
-    const name = evt.target.name;
     const value = evt.target.value;
     setNewItem({
       ...newItem,
@@ -115,8 +98,6 @@ const NewTaskInput = ({ onSubmit }) => {
     evt.preventDefault();
     const codeMaterial = listMaterial[evt.target.options.selectedIndex - 1].code; //função retorna valor da code do material selecionado
     const nameMaterial = listMaterial[evt.target.options.selectedIndex - 1].description; //função retorna valor da code do material selecionado
-    //console.log(material[evt.target.options.selectedIndex-1].code)
-    const name = evt.target.name;
     const value = evt.target.value;
 
     setNewItem({
@@ -127,9 +108,9 @@ const NewTaskInput = ({ onSubmit }) => {
     });
   }
 
+
   function submit(e) {
     e.preventDefault();
-    //   console.log(newItem)
     onSubmit(newItem);
     setNewItem({
       ...newItem,
@@ -139,6 +120,7 @@ const NewTaskInput = ({ onSubmit }) => {
       material: "material",
 
     })
+    setPrice(0)
     setDisableInput(true)
   }
 
@@ -160,15 +142,13 @@ const NewTaskInput = ({ onSubmit }) => {
 
                 />
               </div>
+
               <div className="col">
-                <select name='idFornecedor' disabled={disableInput} defaultValue='fornecedor' className="form-control" onChange={handleChange} >
-                  <option value="fornecedor" disabled>Fornecedor</option>
-                  {options.map(option => (
-                    <option key={option.id} value={option.id}>
-                      {option.name}
-                    </option>
-                  ))}
-                </select>
+                <SelectFornecedor
+                  name='idFornecedor'
+                  onChange={setForn}
+                  disabled={disableInput}
+                />
               </div>
               <div className="col-2">
                 <DatePicker
@@ -199,7 +179,15 @@ const NewTaskInput = ({ onSubmit }) => {
             />
           </div>
           <div className="col-5">
-            <select name='idMaterial' defaultValue={newItem.material} className="form-control" onChange={handleSelect}>
+            {/* <SelectMaterial
+                  name='material_id'
+                  onChange={setMaterial}
+                  value = {material}
+                //  selectItem = {}
+                 // codeItem = 
+                  nameItem =  {setNewItem({...material,  })}  
+                /> */}
+            <select name='material_id' defaultValue={newItem.material} className="form-control" onChange={handleSelect}>
               <option value="material" disabled>Material</option>
               {listMaterial.map(option => (
                 <option key={option.id} value={option.id}>
@@ -220,17 +208,18 @@ const NewTaskInput = ({ onSubmit }) => {
             />
           </div>
           <div className="col-2">
-            <input
+            <InputMoney
               required
-              name="unitPrice"
+              name="price"
               className="form-control"
               placeholder="R$ Unitário"
-              onChange={handleChange}
-              value={newItem.unitPrice}
+              onChange={setPrice}
+              value={price}
             />
           </div>
           <div className="col-2">
             <input
+              disabled
               name="totalPrice"
               className="form-control"
               placeholder="R$ Total"

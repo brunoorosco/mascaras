@@ -11,7 +11,7 @@ export default function Produto(props) {
 
 
     const id = props.match.params.id;
-//    console.log(id)
+    //    console.log(id)
 
     const history = useHistory();
     const [description, setDescription] = useState([])
@@ -35,6 +35,7 @@ export default function Produto(props) {
 
     function handleChange(evt) {
         evt.preventDefault();
+        console.log(evt.target.value)
 
         const value = evt.target.value;
         setMaterial({
@@ -56,11 +57,8 @@ export default function Produto(props) {
 
     async function handleSubmit(data) {
 
-
-        console.log(data)
-
         try {
-            await api.put('material', data, {
+            await api.put('material', material, {
                 headers: {
                     //       Authorization: ongId,
                 }
@@ -77,23 +75,23 @@ export default function Produto(props) {
                 <Form initialData={material} onSubmit={handleSubmit} autoComplete="off">
                     <div className="row form-group">
                         <div className="col-2">
-                            <Input className="form-control text-center"
+                            <input className="form-control text-center"
                                 name="code"
                                 disabled
-                            //value={material.description}
+                                value={material.code}
                             />
                         </div>
                         <div className="col">
-                            <Input className="form-control"
+                            <input className="form-control"
                                 placeholder="Descrição"
                                 maxLength="100"
                                 name="description"
-                                //value={material.description}
+                                value={material.description}
                                 onChange={handleChange} />
                         </div>
                         <div className="col-3">
                             <div className="input-group">
-                                <Input className="form-control"
+                                <input className="form-control"
                                     placeholder="Peso/metros/Pç"
                                     name="deadline"
                                     // value={material.uniMed}
@@ -109,7 +107,7 @@ export default function Produto(props) {
                         </div>
                         <div className="col-2">
                             <div className="input-group">
-                                <Input className="form-control"
+                                <input className="form-control"
                                     placeholder="Largura"
                                     name="largura"
                                     //  value={material.largura}
@@ -132,7 +130,7 @@ export default function Produto(props) {
                             </select>
                         </div>
                         <div className="col-1">
-                            <Input
+                            <input
                                 className="form-control"
                                 placeholder="Rend."
                                 name="rendimento"
@@ -162,7 +160,7 @@ export default function Produto(props) {
                     </div>
                     <div className="row form-group">
                         <div className="col">
-                            <Input className="form-control"
+                            <input className="form-control"
                                 placeholder="Observação do Produto"
                                 name="deadlineDescription"
                                 //  value={material.obser}

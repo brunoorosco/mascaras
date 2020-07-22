@@ -2,7 +2,7 @@ import React,{ useState} from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 
 import SideBar from "./components/Sidebar/SideBar";
-import Content from "./components/content/Content";
+import Content from "./components/Sidebar/content/Content";
 
 import './global.css';
 //import Sidebar from './components/Sidebar'

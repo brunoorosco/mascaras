@@ -17,7 +17,7 @@
     "downshift": "^5.4.2",
     "express": "^4.17.1",
     "inputmask": "^5.0.3",
-    "knex": "^0.20.15",
+    "knex": "^0.21.1",
     "moment": "^2.24.0",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
@@ -26,6 +26,7 @@
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
     "react-icons": "^3.10.0",
+    "react-intl-currency-input": "^0.2.4",
     "react-router-dom": "^5.1.2",
     "react-scripts": "^3.4.1",
     "react-search": "^2.1.1",
@@ -35,7 +36,7 @@
     "react-table-6": "^6.11.0",
     "reactstrap": "^8.4.1",
     "receitaws": "^0.1.4",
-    "sqlite3": "^4.1.1",
+    "sqlite3": "^5.0.0",
     "xml2js": "^0.4.23"
   },
   "scripts": {

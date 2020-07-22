@@ -2,10 +2,9 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Form } from "@unform/web";
-import { Scope } from "@unform/core";
 import DatePicker from "react-datepicker";
 import moment from 'moment'
-import api from './../../../services/api'
+import api from '../../../services/api'
 import Input from './../../../components/Form/Input'
 import AutoFornecedor from '../../../components/AutoComplete/Fornecedor'
 import './styles.css'

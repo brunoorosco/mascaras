@@ -7,6 +7,7 @@ const productionController = require('./controller/productionController')
 const stockController = require('./controller/stockController')
 const cnpjController = require('./controller/cnpjController')
 const fornecedorController = require('./controller/fornecedorController')
+const inStockController = require('./controller/inStockController')
 
 const matRouter = require('./router/matRouter')
 const stockRouter = require('./router/matRouter')
@@ -24,7 +25,12 @@ stockRouter(routes)
 routes.get('/school', schoolController.index)
 routes.post('/school', schoolController.create)
 
-routes.get('/stock', stockController.index)
+//routes.post('/stock/input', inStockController.create)
+routes.route('/stock/input/:id?')
+    .get(inStockController.index)
+    .post(inStockController.create)
+    .put(inStockController.edit)
+    .delete(inStockController.delete)
 
 routes.get('/cnpj/:cnpj', cnpjController.buscar)
 

@@ -4,19 +4,19 @@ import { Container } from "reactstrap";
 import { Switch, Route } from "react-router-dom";
 
 import Topbar from "./Topbar";
-import Dashboard from '../../pages/Dashboard';
-import stockOut from '../../pages/Estoque/Saida'
-import stockIn from '../../pages/Estoque/Entrada';
-import School from '../../pages/School';
-import Product from '../../pages/Produtos/Cadastro';
-import Material from '../../pages/Material/New';
-import updateMaterial from '../../pages/Material/New';
-import Fornecedor from '../../pages/Fornecedor';
-import newFornecedor from '../../pages/Fornecedor/New';
-import Estoque from '../../pages/Estoque';
-import Users from '../../pages/Users';
-import Produto from '../../pages/Material/Update';
-import ListEntrada from '../../components/ListEntrada';
+import Dashboard from '../../../pages/Dashboard';
+import stockOut from '../../../pages/Estoque/Saida'
+import stockIn from '../../../pages/Estoque/Entrada';
+import School from '../../../pages/School';
+import Product from '../../../pages/Produtos/Cadastro';
+import Material from '../../../pages/Material/New';
+import updateMaterial from '../../../pages/Material/New';
+import Fornecedor from '../../../pages/Fornecedor';
+import newFornecedor from '../../../pages/Fornecedor/New';
+import Estoque from '../../../pages/Estoque';
+import Users from '../../../pages/Users';
+import Produto from '../../../pages/Material/Update';
+import ListEntrada from '../../Estoque/Entrada';
 
 const Content = ({ sidebarIsOpen, toggleSidebar }) => (
   <Container

@@ -12,6 +12,7 @@ import {
 import { NavItem, NavLink, Nav } from "reactstrap";
 import classNames from "classnames";
 import { Link } from "react-router-dom";
+import HeaderSidebar from './Header'
 import './styles.css'
 
 import SubMenu from "./SubMenu";
@@ -22,11 +23,11 @@ const SideBar = ({ isOpen, toggle }) => (
       <span color="info" onClick={toggle} style={{ color: "#fff" }}>
         &times;
       </span>
-      <h4>System IST</h4>
+      <HeaderSidebar />
     </div>
     <div className="side-menu">
       <Nav vertical className="list-unstyled pb-3">
-        <p>Bruno Orosco</p>
+
         <SubMenu title="Cadastro" icon={FaHome} items={submenus[0]} />
         <SubMenu title="Consulta" icon={FaCopy} items={submenus[1]} />
 

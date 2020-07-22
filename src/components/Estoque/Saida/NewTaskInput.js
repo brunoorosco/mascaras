@@ -1,26 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import DatePicker from "react-datepicker";
 import moment from 'moment'
-import api from '../../services/api'
+import api from '../../../services/api'
 
 const NewTaskInput = ({ onSubmit }) => {
 
   const [options, setOptions] = useState([]);
   const [listMaterial, setListMaterial] = useState([]);
   const [disableInput, setDisableInput] = useState(false)
-  const [total, setTotal] = useState('')
-
+ 
   const [newItem, setNewItem] = useState({
     notaFiscal: "",
     dataEntrada: moment(Date()).format("DD-MM-YYYY"),
     idFornecedor: "",
-    totalPrice: "",
+    totalPrice: 0,
     quantity: 1,
     code: "",
     idMaterial: "",
     material: "material",
     unitPrice: "",
-    totalPrice: 0,
   });
 
   const [pedido, setPedido] = useState({
@@ -30,12 +28,6 @@ const NewTaskInput = ({ onSubmit }) => {
     fornecedor: "",
     totalPrice: "",
   });
-
-  useEffect(() => {
-    api.get('fornecedor').then(response => {
-      setOptions(response.data);
-    })
-  }, [setOptions])
 
   useEffect(() => {
     api.get('material').then(response => {
@@ -61,26 +53,7 @@ const NewTaskInput = ({ onSubmit }) => {
   }, [newItem.quantity, newItem.unitPrice])
 
 
-  function filter_array(test_array) {
-    let index = -1;
-    const arr_length = test_array ? test_array.length : 0;
-    let resIndex = -1;
-    const result = [];
-
-    while (++index < arr_length) {
-      const value = test_array[index];
-
-      if (value) {
-        result[++resIndex] = value;
-      }
-    }
-
-    return result;
-  }
-
-
-
-  function setNewTask(evt) {
+    function setNewTask(evt) {
     evt.preventDefault();
     const value = evt.target.value;
     const name = evt.target.name;
@@ -97,8 +70,6 @@ const NewTaskInput = ({ onSubmit }) => {
       ...newItem,
       dataEntrada: moment(data).format("DD-MM-YYYY")
     })
-    console.log(moment(data).format("DD-MM-YYYY"))
-    // setStartDate(evt.target.value)
   }
 
   function handleChange(evt) {
@@ -129,7 +100,6 @@ const NewTaskInput = ({ onSubmit }) => {
 
   function submit(e) {
     e.preventDefault();
-    //   console.log(newItem)
     onSubmit(newItem);
     setNewItem({
       ...newItem,
@@ -147,7 +117,7 @@ const NewTaskInput = ({ onSubmit }) => {
       <form onSubmit={submit} autoComplete="off">
         <div className="card">
           <div className="card-body">
-            <h4>Cadastro de Entrada</h4>
+            <h4>Cadastro de Saida</h4>
             <div className="row">
 
               <div className="col-2">
@@ -228,6 +198,7 @@ const NewTaskInput = ({ onSubmit }) => {
               onChange={handleChange}
               value={newItem.unitPrice}
             />
+            
           </div>
           <div className="col-2">
             <input

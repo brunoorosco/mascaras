@@ -7,7 +7,6 @@ const ListItem = ({ onChange, onDelete, value }) => {
   const [itens, setItens] = useState({
     notaFiscal: value.notaFiscal,
     dataEntrada: new Date(),
-    idFornecedor: "",
     quantity: value.quantity,
     codeMaterial: value.code,
     material: value.material,
@@ -21,7 +20,7 @@ const ListItem = ({ onChange, onDelete, value }) => {
       <ul>
         <li>
           <div className='row'>
-            <div className="col">
+            <div className="col-2">
               <strong>Cód. Produto</strong>
               <p>{itens.codeMaterial}</p>
             </div>
@@ -29,15 +28,15 @@ const ListItem = ({ onChange, onDelete, value }) => {
               <strong>Material</strong>
               <p>{itens.material}</p>
             </div>
-            <div className="col">
-              <strong>Quantidade</strong>
+            <div className="col-1">
+              <strong>Quant.</strong>
               <p>{itens.quantity}</p>
             </div>
-            <div className="col">
+            <div className="col-2">
               <strong>Valor Unitário</strong>
               <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(itens.unitPrice)}</p>
             </div>
-            <div className="col">
+            <div className="col-2">
               <strong>Total</strong>
               <p>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(itens.totalPrice)}</p>
             </div>

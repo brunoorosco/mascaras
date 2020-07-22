@@ -4,7 +4,6 @@ module.exports = {
 
     async index(req, res) {
         const { id } = req.query;
-        console.log(id)
         const material = await connection('material')
         return res.json(material);
     },
@@ -19,8 +18,9 @@ module.exports = {
     },
     async edit(req, res) {
 
-        const { id, code, description, deadline, largura, deadlineDescription, rendimento, uniMed } = req.body;
 
+        const { id, code, description, deadline, largura, deadlineDescription, rendimento, uniMed } = req.body;
+        console.log(req.body);
 
         await connection('material')
             .where({ id: id })

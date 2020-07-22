@@ -2,7 +2,7 @@ const materialController = require('./../controller/materialController')
 const connection = require('../../database/connection')
 
 const matRouter = (app) => {
-     app.get('/material', materialController.index)
+    app.get('/material', materialController.index)
 
     app.route('/material/:id?')
       //  .get(materialController.index)

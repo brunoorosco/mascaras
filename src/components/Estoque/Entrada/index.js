@@ -2,8 +2,13 @@ import React, { useState } from 'react';
 import './styles.css';
 import ListItem from './ListItem'
 import NewTaskInput from './NewTaskInput'
+import api from '../../../services/api';
+import { Link, useHistory, } from 'react-router-dom'
+
 
 const ListaEntrada = () => {
+
+  const history = useHistory();
   const [tasks, setTasks] = useState([]);
   const [newItem, setNewItem] = useState({
     notaFiscal: "",
@@ -15,14 +20,24 @@ const ListaEntrada = () => {
     totalPrice: "",
   });
 
-  console.log(newItem)
+  async function addNewTask(task) {
+    try {
+      await api.post('/stock/input', task, {
+        headers: {
+          //       Authorization: ongId,
+        }
+      })
+      setNewItem({ ...task })
+      const itensCopy = Array.from(tasks);
+      itensCopy.push({ id: tasks.length, value: task });
+      setTasks(itensCopy);
+  
+     // history.push('/estoque')
+    } catch (error) {
+      alert(`Erro ao cadastrar ${error}`)
+    }
 
-  function addNewTask(task) {
-    setNewItem({ ...task })
-    const itensCopy = Array.from(tasks);
-    itensCopy.push({ id: tasks.length, value: task });
-    setTasks(itensCopy);
-    //console.log(newItem)
+ 
   }
 
   function updateTask({ target }, index) {
@@ -35,12 +50,12 @@ const ListaEntrada = () => {
     const itensCopy = Array.from(tasks);
     itensCopy.splice(index, 1);
     setTasks(itensCopy);
+    console.log(itensCopy)
   }
 
-   function enviar(data)
-  {
-        data.preventDefault();
-        console.log(data)
+  function enviar(data) {
+    data.preventDefault();
+    //  console.log(data)
   }
 
   return (
@@ -58,7 +73,7 @@ const ListaEntrada = () => {
             />
           ))}
 
-         
+
         </form>
       </div>
       {/* <div className="Array-preview">
