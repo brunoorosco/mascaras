@@ -18,7 +18,7 @@
     "express": "^4.17.1",
     "inputmask": "^5.0.3",
     "knex": "^0.21.1",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.1",
     "react-bootstrap-table": "^4.3.1",
