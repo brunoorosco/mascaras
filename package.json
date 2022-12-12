@@ -15,7 +15,7 @@
     "classnames": "^2.2.6",
     "cors": "^2.8.5",
     "downshift": "^5.4.2",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "inputmask": "^5.0.3",
     "knex": "^0.21.1",
     "moment": "^2.24.0",
